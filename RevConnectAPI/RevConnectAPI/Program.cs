@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen(c =>
         {securitySchema, new[] { "Bearer" } }
     });
 
-
+    // Test - v1
     //c.SwaggerDoc("v1",
     //    new Microsoft.OpenApi.Models.OpenApiInfo
     //    {
@@ -81,13 +81,13 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Make all controllers have authorize attribute
-builder.Services.AddControllers(options =>
-{
-    var policy = new AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
-    options.Filters.Add(new AuthorizeFilter(policy));
-});
+//builder.Services.AddControllers(options =>
+//{
+//    var policy = new AuthorizationPolicyBuilder()
+//        .RequireAuthenticatedUser()
+//        .Build();
+//    options.Filters.Add(new AuthorizeFilter(policy));
+//});
 
 // ConenctionString to database
 builder.Services.AddDbContext<RevConnectContext>(options =>

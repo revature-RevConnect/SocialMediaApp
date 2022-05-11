@@ -9,34 +9,30 @@ namespace RevConnectAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    public class UserController : ControllerBase
     {
         // RevConnectContext field
         private readonly RevConnectContext _dataContext;
         // Constructor
-        public PostController(RevConnectContext dataContext)
+        public UserController(RevConnectContext dataContext)
         {
             _dataContext = dataContext;
         }
 
         // Methods
         [HttpGet]
-        [Authorize]
-        public async Task<ActionResult<List<Post>>> GetAllPosts()
+        public async Task<ActionResult<List<User>>> GetUsers()
         {
-            return await _dataContext.Posts.ToListAsync();
+            return await _dataContext.Users.ToListAsync();
         }
 
         [HttpPost]
-        [Authorize]
-        public async Task<ActionResult<List<Post>>> AddPost(Post post)
+        public async Task<ActionResult<List<User>>> AddUser(User user)
         {
-            _dataContext.Posts.Add(post);
+            _dataContext.Users.Add(user);
             await _dataContext.SaveChangesAsync();
 
-            return Ok(await _dataContext.Posts.ToListAsync());
+            return Ok(await _dataContext.Users.ToListAsync());
         }
-
-
     }
 }
