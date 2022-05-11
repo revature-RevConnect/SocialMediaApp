@@ -1,3 +1,4 @@
+like_a_post
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -5,3 +6,19 @@
         </div>
     </div>
 </div>
+
+<!-- navbar -->
+<div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+    <app-login-button></app-login-button>
+</div>
+<ng-template #loaded>
+ <app-navbar></app-navbar>
+
+<router-outlet></router-outlet>
+ 
+<!-- footer -->
+<app-footer></app-footer> 
+</ng-template>
+
+
+main
