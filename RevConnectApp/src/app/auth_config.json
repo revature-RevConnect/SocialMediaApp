@@ -1,6 +1,0 @@
-{
-    "domain": "dev-1kna-o7p.us.auth0.com",
-    "clientId": "4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y",
-    "audience": "http://your-audience-identifier",
-    "apiUrl": "http://localhost:4200"
-}
