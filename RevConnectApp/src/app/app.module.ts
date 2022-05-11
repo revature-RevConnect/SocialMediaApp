@@ -20,6 +20,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ChatroomComponent } from './pages/chatroom/chatroom.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { AppLoadingComponent } from './components/app-loading/app-loading.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     SettingsComponent,
     ChatroomComponent,
     LoginButtonComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    AppLoadingComponent
   ],
   imports: [
     BrowserModule,
