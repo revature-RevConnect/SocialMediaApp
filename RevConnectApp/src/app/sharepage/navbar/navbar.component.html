@@ -11,6 +11,8 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="settings" routerLinkActive="active link">Settings</a>
     </li>
-    <app-login-button></app-login-button>
+    <!-- hides the login button when the user is logged in and authenticated -->
+    <app-login-button *ngIf="(auth.isAuthenticated$ | async ) === false" ></app-login-button>
+    <!-- logout button when the user is logged in and authenticated -->
+    <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
   </ul>
- 
