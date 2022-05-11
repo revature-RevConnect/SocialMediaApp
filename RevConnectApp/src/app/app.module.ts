@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
-
 
 
 import { AppComponent } from './app.component';
@@ -44,8 +44,8 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: 'YOUR_DOMAIN',
-      clientId: 'YOUR_CLIENT_ID'
+      domain: 'dev-1kna-o7p.us.auth0.com',
+      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y'
     }),
   ],
   providers: [],
