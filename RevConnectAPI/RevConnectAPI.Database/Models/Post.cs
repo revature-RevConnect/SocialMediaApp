@@ -11,7 +11,6 @@ namespace RevConnectAPI.Database.Models
     public class Post
     {
         [Key]
-        [MaxLength(256)]
         public int postID { get; set; }
         public string body { get; set; }
         [MaxLength(256)]

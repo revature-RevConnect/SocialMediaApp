@@ -11,7 +11,6 @@ namespace RevConnectAPI.Database.Models
     public class Comment
     {
         [Key]
-        [MaxLength(256)]
         public int commentID { get; set; }
         public string body { get; set; }
         public string date { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RevConnectAPI.Database.DataAccess;
 
@@ -11,9 +12,10 @@ using RevConnectAPI.Database.DataAccess;
 namespace RevConnectAPI.Database.Migrations
 {
     [DbContext(typeof(RevConnectContext))]
-    partial class RevConnectContextModelSnapshot : ModelSnapshot
+    [Migration("20220511174740_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,6 +29,7 @@ namespace RevConnectAPI.Database.Migrations
                 {
                     b.Property<int>("commentID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentID"), 1L, 1);
@@ -58,6 +61,7 @@ namespace RevConnectAPI.Database.Migrations
                 {
                     b.Property<int>("likeID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("likeID"), 1L, 1);
@@ -86,6 +90,7 @@ namespace RevConnectAPI.Database.Migrations
                 {
                     b.Property<int>("postID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("postID"), 1L, 1);
@@ -116,6 +121,7 @@ namespace RevConnectAPI.Database.Migrations
                 {
                     b.Property<int>("userID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userID"), 1L, 1);

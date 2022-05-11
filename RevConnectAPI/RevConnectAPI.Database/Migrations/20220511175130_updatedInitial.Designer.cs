@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RevConnectAPI.Database.DataAccess;
 
@@ -11,9 +12,10 @@ using RevConnectAPI.Database.DataAccess;
 namespace RevConnectAPI.Database.Migrations
 {
     [DbContext(typeof(RevConnectContext))]
-    partial class RevConnectContextModelSnapshot : ModelSnapshot
+    [Migration("20220511175130_updatedInitial")]
+    partial class updatedInitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

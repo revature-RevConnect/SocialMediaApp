@@ -10,7 +10,6 @@ namespace RevConnectAPI.Database.Models
     public class User
     {
         [Key]
-        [MaxLength(256)]
         public int userID { get; set; }
         [Required]
         [MaxLength(256)]

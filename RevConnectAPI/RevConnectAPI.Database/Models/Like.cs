@@ -11,7 +11,6 @@ namespace RevConnectAPI.Database.Models
     public class Like
     {
         [Key]
-        [MaxLength(256)]
         public int likeID { get; set; }
         [ForeignKey("User")]
         public int userID { get; set; }
