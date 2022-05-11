@@ -6,6 +6,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
@@ -13,9 +17,9 @@ import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { LoginComponent } from './pages/login/login.component';
-import { LogoutComponent } from './pages/logout/logout.component';
 import { ChatroomComponent } from './pages/chatroom/chatroom.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +29,9 @@ import { ChatroomComponent } from './pages/chatroom/chatroom.component';
     HomeComponent,
     UserProfileComponent,
     SettingsComponent,
-    LoginComponent,
-    LogoutComponent,
-    ChatroomComponent
+    ChatroomComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,13 @@ import { ChatroomComponent } from './pages/chatroom/chatroom.component';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'YOUR_DOMAIN',
+      clientId: 'YOUR_CLIENT_ID'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
