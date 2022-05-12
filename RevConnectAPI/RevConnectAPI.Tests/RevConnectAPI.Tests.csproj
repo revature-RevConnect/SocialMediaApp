@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RevConnectAPI.Database\RevConnectAPI.Database.csproj" />
+    <ProjectReference Include="..\RevConnectAPI\RevConnectAPI.csproj" />
   </ItemGroup>
 
 </Project>
