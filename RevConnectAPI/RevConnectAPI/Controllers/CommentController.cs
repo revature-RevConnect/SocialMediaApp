@@ -28,11 +28,41 @@ namespace RevConnectAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Comment>>> AddComment(Comment comment)
         {
+            comment.date = DateTime.Now.ToString();
             _dataContext.Comments.Add(comment);
             await _dataContext.SaveChangesAsync();
 
             return Ok(await _dataContext.Comments.ToListAsync());
         }
 
+        [HttpPut("{commentId}")]
+        public async Task<ActionResult<List<Comment>>> UpdatePost(Comment comment)
+        {
+            var dbComment = await _dataContext.Comments.FindAsync(comment.commentID);
+            if (dbComment == null)
+                return BadRequest("Comment not found.");
+
+            // Update post's body, and date
+            dbComment.body = comment.body;
+            dbComment.date = DateTime.Now.ToString();
+
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(await _dataContext.Comments.ToListAsync());
+        }
+
+        [HttpDelete("{commentId}")]
+        public async Task<ActionResult<List<Post>>> DeletePost(int commentId)
+        {
+            var dbComment = await _dataContext.Comments.FindAsync(commentId);
+            if (dbComment == null)
+                return BadRequest("Comment not found.");
+
+            // Remove acquired post
+            _dataContext.Comments.Remove(dbComment);
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(await _dataContext.Comments.ToListAsync());
+        }
     }
 }

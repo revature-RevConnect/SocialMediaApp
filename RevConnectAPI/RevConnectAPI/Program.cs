@@ -81,13 +81,13 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Make all controllers have authorize attribute
-//builder.Services.AddControllers(options =>
-//{
-//    var policy = new AuthorizationPolicyBuilder()
-//        .RequireAuthenticatedUser()
-//        .Build();
-//    options.Filters.Add(new AuthorizeFilter(policy));
-//});
+builder.Services.AddControllers(options =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+    options.Filters.Add(new AuthorizeFilter(policy));
+});
 
 // ConenctionString to database
 builder.Services.AddDbContext<RevConnectContext>(options =>
