@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevConnectAPI.Database.Models
 {
+    //Dan wrote this User Model
     public class User
     {
         [Key]

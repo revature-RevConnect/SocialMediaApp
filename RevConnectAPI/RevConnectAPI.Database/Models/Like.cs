@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace RevConnectAPI.Database.Models
 {
+    //Dan wrote this Like Model
     public class Like
     {
         [Key]

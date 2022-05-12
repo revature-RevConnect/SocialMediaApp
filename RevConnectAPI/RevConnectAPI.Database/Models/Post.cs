@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace RevConnectAPI.Database.Models
 {
+    //Dan wrote this Post Model
     public class Post
     {
+        
         [Key]
         public int postID { get; set; }
+        public int userID { get; set; }
         public string body { get; set; }
         [MaxLength(256)]
         public string date { get; set; }

@@ -11,7 +11,8 @@ namespace RevConnectAPI.Tests
 {
     public class UserTest
     {
-        //Testing GetUsers Method from UserController.cs
+        //Diego Wrote the Get Test for User Controller
+        /*NOT DONE Add post test...*/
         [Fact]
         public async Task UserController_GetUsers_GetAllUsers()
         {

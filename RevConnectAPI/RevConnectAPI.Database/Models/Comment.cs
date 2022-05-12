@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace RevConnectAPI.Database.Models
 {
+    //Dan wrote this Comment Model
     public class Comment
     {
         [Key]
