@@ -1,0 +1,26 @@
+.nav-item .nav-link
+{
+    color: black;
+} 
+
+.nav-item .nav-link.active.link
+{
+    color: #F26925;
+    text-decoration: underline;
+} 
+
+.navbar-brand 
+{
+    text-decoration: none;
+    background-color: #fff;
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    
+}
+.navbar-brand:hover
+{
+    background-color: #F26925;
+    color: #fff;
+}

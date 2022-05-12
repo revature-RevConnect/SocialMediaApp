@@ -1,7 +1,7 @@
 .card-body1{
     padding: 25px;
     border-style: inset;
-    border-width: 2px;
+    border-width: 5px;
     border-color: #F26925;
     
 }
@@ -9,7 +9,7 @@
 .card-body2{
     padding: 16px;
     border-style: inset;
-    border-width: 2px;
+    border-width: 5px;
     border-color: #F26925;
 }
 
@@ -18,7 +18,7 @@
     text-align-last: center;
     height: 300px;
     border-style: inset;
-    border-width: 2px;
+    border-width: 5px;
     border-color: #F26925;
    
 }
@@ -28,7 +28,18 @@
     text-align-last: center;
     height: 300px;
     border-style: inset;
-    border-width: 2px;
+    border-width: 5px;
     border-color: #F26925;
 }   
 
+.btn {
+    transition-duration: 0.4s;
+    border: 2px solid #F26925;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
+}
