@@ -1,6 +1,7 @@
+<div class="header">
 <ul class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link" routerLink="" routerLinkActive="active link">Home</a>
+      <a class="nav-link active" routerLink="" routerLinkActive="active link">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="chatroom" routerLinkActive="active link">Chat Room</a>
@@ -16,6 +17,8 @@
     <!-- logout button when the user is logged in and authenticated -->
     <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
   </ul>
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="">RevConnect</a>
+  <nav class="nav justify-content-left">
+      <a class="navbar-brand" routerLink="">
+      <img src="./../../assets/img/revature-logo.png" alt="Revature Logo" width="200" height="120">
+      </a>
+ 
