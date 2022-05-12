@@ -37,6 +37,37 @@ namespace RevConnectAPI.Controllers
             return Ok(await _dataContext.Posts.ToListAsync());
         }
 
+        [HttpPut("{postId}")]
+        [Authorize]
+        public async Task<ActionResult<List<Post>>> UpdatePost(Post post)
+        {
+            var dbPost = await _dataContext.Posts.FindAsync(post.postID);
+            if (dbPost == null)
+                return BadRequest("Post not found.");
 
+            // Update post's body, image, and date
+            dbPost.body = post.body;
+            dbPost.image = post.image;
+            dbPost.date = DateTime.Now.ToString();
+
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(await _dataContext.Posts.ToListAsync());
+        }
+
+        [HttpDelete("{postId}")]
+        [Authorize]
+        public async Task<ActionResult<List<Post>>> DeletePost(int postId)
+        {
+            var dbPost = await _dataContext.Posts.FindAsync(postId);
+            if (dbPost == null)
+                return BadRequest("Post not found.");
+
+            // Remove acquired post
+            _dataContext.Posts.Remove(dbPost);
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(await _dataContext.Posts.ToListAsync());
+        }
     }
 }
