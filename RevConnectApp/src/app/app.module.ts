@@ -46,8 +46,8 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: 'dev-1kna-o7p.us.auth0.com',
-      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y'
+      domain: '',
+      clientId: ''
     }),
   ],
   providers: [],
