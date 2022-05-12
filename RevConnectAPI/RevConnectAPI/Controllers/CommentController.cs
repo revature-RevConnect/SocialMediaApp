@@ -28,7 +28,7 @@ namespace RevConnectAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Comment>>> AddComment(Comment comment)
         {
-            //
+            comment.date = DateTime.Now.ToString();
             _dataContext.Comments.Add(comment);
             await _dataContext.SaveChangesAsync();
 

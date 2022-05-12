@@ -31,6 +31,7 @@ namespace RevConnectAPI.Controllers
         [Authorize]
         public async Task<ActionResult<List<Post>>> AddPost(Post post)
         {
+            post.date = DateTime.Now.ToString();
             _dataContext.Posts.Add(post);
             await _dataContext.SaveChangesAsync();
 
