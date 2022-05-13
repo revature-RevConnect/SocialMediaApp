@@ -4,6 +4,13 @@ body{
     
 }
 
+.card {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
+}
+
 .container-p-y {
     border-style: inset;
     border-width: 5px;
@@ -62,9 +69,6 @@ label.btn {
     overflow: hidden;
 }
 
-.row-border-light{
-    font-weight: bold;
-}
 
 .account-settings-fileinput {
     position: absolute;
