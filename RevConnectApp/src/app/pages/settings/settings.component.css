@@ -19,13 +19,25 @@ label.btn {
 }
 
 .btn-outline-primary {
-    border-color: #26B4FF;
+    border-color: #F26925;
     background: transparent;
-    color: #26B4FF;
+    
 }
 
 .btn {
     cursor: pointer;
+}
+
+.btn {
+    transition-duration: 0.4s;
+    border: 2px solid #F26925;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
 }
 
 .text-light {
