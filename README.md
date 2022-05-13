@@ -1,1 +1,1 @@
-homepage
+settings
