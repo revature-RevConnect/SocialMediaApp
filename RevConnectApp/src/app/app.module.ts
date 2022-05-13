@@ -26,7 +26,7 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
 @NgModule({
   declarations: [
     AppComponent,
-    DarkModeComponent
+    DarkModeComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
