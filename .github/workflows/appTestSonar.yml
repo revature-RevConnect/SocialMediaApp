@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'RevConnectApp/**'
+      - 'RevConnectApp\**'
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
