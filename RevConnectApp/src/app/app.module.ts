@@ -6,10 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
-
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
