@@ -1,6 +1,21 @@
 body{
     background: #f5f5f5;
     margin-top:20px;
+    
+}
+
+.card {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
+}
+
+.container-p-y {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
 }
 
 .ui-w-80 {
@@ -19,29 +34,30 @@ label.btn {
 }
 
 .btn-outline-primary {
-    border-color: #26B4FF;
+    border-color: #F26925;
     background: transparent;
-    color: #26B4FF;
+    
 }
 
 .btn {
     cursor: pointer;
 }
 
+.btn {
+    transition-duration: 0.4s;
+    border: 2px solid #F26925;
+    font-weight: bold;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
+}
+
 .text-light {
     color: #babbbc !important;
-}
-
-.btn-facebook {
-    border-color: rgba(0,0,0,0);
-    background: #3B5998;
-    color: #fff;
-}
-
-.btn-instagram {
-    border-color: rgba(0,0,0,0);
-    background: #000;
-    color: #fff;
 }
 
 .card {
@@ -52,6 +68,7 @@ label.btn {
 .row-bordered {
     overflow: hidden;
 }
+
 
 .account-settings-fileinput {
     position: absolute;
@@ -97,4 +114,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     padding: 0.85rem 1.5rem;
     border-color: rgba(24,28,33,0.03) !important;
 }
+
+
 
