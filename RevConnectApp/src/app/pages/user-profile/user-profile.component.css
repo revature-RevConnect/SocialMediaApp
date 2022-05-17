@@ -22,6 +22,13 @@
    
 }
 
+.container-p-y {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
+}
+
 
 .main-breadcrumb {
     border-style: inset;
