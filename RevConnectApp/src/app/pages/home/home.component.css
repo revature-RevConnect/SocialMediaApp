@@ -260,5 +260,16 @@ a:hover{
 
 .nav-pills {
     letter-spacing: 10px;
-    
+}
+
+.btn-info {
+    transition-duration: 0.4s;
+    border: 2px solid #F26925;
+  }
+  
+.btn-info:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
 }
