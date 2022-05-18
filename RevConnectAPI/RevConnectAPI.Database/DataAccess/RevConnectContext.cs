@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RevConnectAPI.Database.Models;
+using RevConnectAPI.Data.Models;
 
-namespace RevConnectAPI.Database.DataAccess
+namespace RevConnectAPI.Data.DataContext
 {
-    public class RevConnectContext:DbContext
+    public class RevConnectContext : DbContext
     {
-        public RevConnectContext(DbContextOptions options): base(options){ }
+        public RevConnectContext(DbContextOptions options) : base(options) { }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
-        public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
