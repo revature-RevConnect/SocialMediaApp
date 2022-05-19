@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
@@ -19,6 +19,11 @@ import { ChatroomComponent } from './pages/chatroom/chatroom.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { AppLoadingComponent } from './components/app-loading/app-loading.component';
+import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
+import { SocialLinksComponent } from './components/social-links/social-links.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
+import { TopPostComponent } from './components/top-post/top-post.component';
+import { GeneralComponent } from './components/general/general.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
     ChatroomComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    AppLoadingComponent
+    AppLoadingComponent,
+    DarkModeComponent,
+    SocialLinksComponent,
+    AboutMeComponent,
+    TopPostComponent,
+    GeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +55,29 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: '',
-      clientId: ''
+      clientId: '',
+      audience: "https://revconnect-api-endpoint/",
+      apiUri: "https://localhost:7140/swagger",
+      appUri: "http://localhost:4200",
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: "https://localhost:7140/swagger",
+            tokenOptions: {
+              audience: 'https://revconnect-api-endpoint/',
+            }
+          }
+        ]
+      }
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
