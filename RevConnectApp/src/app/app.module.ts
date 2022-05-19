@@ -62,8 +62,8 @@ import { DisplaySettingsTopPostComponent } from './components/display-settings-t
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: 'dev-1kna-o7p.us.auth0.com',
-      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
+      domain: '',
+      clientId: '',
       audience: "https://revconnect-api-endpoint/",
       apiUri: "https://localhost:7140/swagger",
       appUri: "http://localhost:4200",
