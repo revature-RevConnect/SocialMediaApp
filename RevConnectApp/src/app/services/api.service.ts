@@ -37,6 +37,19 @@ export class ApiService {
   updateAboutMe(user:UserSocial):Observable<UserSocial>{
     return this.http.put<UserSocial>(`${url}/Users/aboutMe`, user ,httpOptions);
   }
+
+  updatePhone(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/phone`, user ,httpOptions);
+  }
+
+  updateEmail(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/email`, user ,httpOptions);
+  }
+
+  updateAddress(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/address`, user ,httpOptions);
+  }
+
   getCurrentUser(authID:any):Observable<UserSocial>{
     return this.http.get<UserSocial>(`${url}/Users/${authID}`);
   }

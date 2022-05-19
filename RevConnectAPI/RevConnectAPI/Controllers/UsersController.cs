@@ -68,6 +68,39 @@ namespace RevConnectAPI.Controllers
 
             return new ContentResult() { StatusCode = 200 };
         }
+
+        [HttpPut("phone")]
+        public async Task<ActionResult<User>> ChangePhoneNumber(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.aboutMe = user.aboutMe;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
+
+        [HttpPut("email")]
+        public async Task<ActionResult<User>> ChangeEmail(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.aboutMe = user.aboutMe;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
+
+        [HttpPut("address")]
+        public async Task<ActionResult<User>> ChangeAddress(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.aboutMe = user.aboutMe;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
     }
 
 }

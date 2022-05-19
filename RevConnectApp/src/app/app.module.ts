@@ -24,6 +24,10 @@ import { SocialLinksComponent } from './components/social-links/social-links.com
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { TopPostComponent } from './components/top-post/top-post.component';
 import { GeneralComponent } from './components/general/general.component';
+import { DisplaySettingsGeneralComponent } from './components/display-settings-general/display-settings-general.component';
+import { DisplaySettingsAboutmeComponent } from './components/display-settings-aboutme/display-settings-aboutme.component';
+import { DisplaySettingsSocialLinksComponent } from './components/display-settings-social-links/display-settings-social-links.component';
+import { DisplaySettingsTopPostComponent } from './components/display-settings-top-post/display-settings-top-post.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { GeneralComponent } from './components/general/general.component';
     SocialLinksComponent,
     AboutMeComponent,
     TopPostComponent,
-    GeneralComponent
+    GeneralComponent,
+    DisplaySettingsGeneralComponent,
+    DisplaySettingsAboutmeComponent,
+    DisplaySettingsSocialLinksComponent,
+    DisplaySettingsTopPostComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +62,8 @@ import { GeneralComponent } from './components/general/general.component';
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: '',
-      clientId: '',
+      domain: 'dev-1kna-o7p.us.auth0.com',
+      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
       audience: "https://revconnect-api-endpoint/",
       apiUri: "https://localhost:7140/swagger",
       appUri: "http://localhost:4200",
