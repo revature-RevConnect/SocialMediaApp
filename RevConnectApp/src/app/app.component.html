@@ -1,6 +1,7 @@
 <!-- navbar -->
 <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
     <app-login-button></app-login-button>
+    
 </div>
 <ng-template #loaded>
  <app-navbar></app-navbar>
