@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Add DarkMode
 
-Add DarkMode switch to NavBar to make the background light or dark.
+Add DarkMode switch to NavBar to make the background light or dark. (Last Updated: 05/20/2022)
