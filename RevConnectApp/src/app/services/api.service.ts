@@ -13,7 +13,7 @@ const httpOptions ={
   }),
 };
 
-const url='https://revconnect-api-endpoint/'
+const url='https://localhost:7140'
 
 @Injectable({
   providedIn: 'root'

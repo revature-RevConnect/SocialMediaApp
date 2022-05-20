@@ -28,6 +28,7 @@ import { DisplaySettingsGeneralComponent } from './components/display-settings-g
 import { DisplaySettingsAboutmeComponent } from './components/display-settings-aboutme/display-settings-aboutme.component';
 import { DisplaySettingsSocialLinksComponent } from './components/display-settings-social-links/display-settings-social-links.component';
 import { DisplaySettingsTopPostComponent } from './components/display-settings-top-post/display-settings-top-post.component';
+import { DisplayProfileComponent } from './components/display-profile/display-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DisplaySettingsTopPostComponent } from './components/display-settings-t
     DisplaySettingsGeneralComponent,
     DisplaySettingsAboutmeComponent,
     DisplaySettingsSocialLinksComponent,
-    DisplaySettingsTopPostComponent
+    DisplaySettingsTopPostComponent,
+    DisplayProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -62,15 +64,15 @@ import { DisplaySettingsTopPostComponent } from './components/display-settings-t
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: '',
-      clientId: '',
+      domain: 'dev-1kna-o7p.us.auth0.com',
+      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
       audience: "https://revconnect-api-endpoint/",
-      apiUri: "https://localhost:7140/swagger",
+      apiUri: "https://localhost:7140/",
       appUri: "http://localhost:4200",
       httpInterceptor: {
         allowedList: [
           {
-            uri: "https://localhost:7140/swagger",
+            uri: "https://localhost:7140/*",
             tokenOptions: {
               audience: 'https://revconnect-api-endpoint/',
             }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { Component, OnInit, EventEmitter, Output,Input } from '@angular/core';
+import { AuthService, User } from '@auth0/auth0-angular';
+import { ApiService } from 'src/app/services/api.service';
+import { UserSocial } from 'src/app/Interfaces/UserSocial';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,15 +9,14 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  profileJson!: string; 
+  picture!:string;
+  user!:any;
+  userSocial!:UserSocial;
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private api:ApiService) {}
     
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => (this.profileJson = JSON.stringify(profile,null,2))
-
-    )
+    this.auth.user$.subscribe((data)=>this.user=data) 
 
   }
 
