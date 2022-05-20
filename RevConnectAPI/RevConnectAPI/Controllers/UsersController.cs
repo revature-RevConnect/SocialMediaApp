@@ -48,7 +48,7 @@ namespace RevConnectAPI.Controllers
         }
 
         [HttpPut("username")]
-        public async Task<ActionResult<User>> ChangeUsername(User user)
+        public async Task<ActionResult<User>> ChangeUserName(User user)
         {
             var newUser = await _rc.Users
                         .Where(b => b.authID == user.authID).FirstAsync();

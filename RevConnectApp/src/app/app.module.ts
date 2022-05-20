@@ -64,15 +64,15 @@ import { DisplayProfileComponent } from './components/display-profile/display-pr
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: '',
-      clientId: '',
+      domain: 'dev-1kna-o7p.us.auth0.com',
+      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
       audience: "https://revconnect-api-endpoint/",
-      apiUri: "https://localhost:7140/",
+      apiUri: "https://revconnect.azurewebsites.net/",
       appUri: "http://localhost:4200",
       httpInterceptor: {
         allowedList: [
           {
-            uri: "https://localhost:7140/*",
+            uri: "https://revconnect.azurewebsites.net/*",
             tokenOptions: {
               audience: 'https://revconnect-api-endpoint/',
             }

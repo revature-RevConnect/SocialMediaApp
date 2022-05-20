@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { UserSocial } from 'src/app/Interfaces/UserSocial';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { ApiService } from 'src/app/services/api.service';
@@ -25,9 +25,8 @@ export class SettingsComponent implements OnInit {
     console.log(this.userSocial);
   }
 
-  updateUserPicture(userSocial:UserSocial){
-    this.api.updatePicture(userSocial).subscribe((data)=>this.user=data);
-    console.log(userSocial);
+  updateUserPicture(photo:any){
+    this.api.postPicture(photo).subscribe((data)=>this.user=data);
   }
 
   updateUsername(userSocial:UserSocial){
