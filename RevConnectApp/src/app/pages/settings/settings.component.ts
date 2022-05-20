@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
   constructor(private api:ApiService, public auth:AuthService) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((data)=>this.user=data)
+    this.auth.user$.subscribe((data)=>this.user=data);
   }
 
   getUserProfile(){

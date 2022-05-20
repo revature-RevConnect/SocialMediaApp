@@ -1,1 +1,9 @@
-<p>display-settings-aboutme works!</p>
+<br>
+<h5>Current About Me: {{userSocial.aboutMe}}</h5>
+<form #aboutMeForm="ngForm" (ngSubmit)="submitAboutMe(); aboutMeForm.reset()">
+    <div><br>
+        <label for="ID">Change About Me</label>
+        <td><input type="textbox" name="aboutMe" required [(ngModel)]="aboutMe" id="aboutMe" placeholder="Enter New About Me"/></td>
+        <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!aboutMe"/></td>
+    </div>
+</form>

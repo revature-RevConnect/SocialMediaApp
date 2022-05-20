@@ -1,21 +1,20 @@
+<div class="container light-style flex-grow-1 container-p-y">
+<img [src]="userSocial.profilePicture" width="150" height="150">
+<h5>Current Profile Picture</h5>
+<div class="media-body ml-4">
+    <td><label>
+    <input  type="file" class="account-settings-fileinput" (change)="onFileSelected($event)" >
+    
+    </label><td><button class="btn" (click)="onUpload()">Submit</button></td><br>
+    
+</div>
 
-<div class="card-body">
-  <div class="form-group">
-    <label class="form-label">Change User Name</label>
-    <input type="text" class="form-control mb-1" value="">
-  </div>
+<h5>Current Username: {{userSocial.name}}</h5>
+<form #usernameForm="ngForm" (ngSubmit)="submitUsername(); usernameForm.reset()">
+    <div>
+        <label for="ID">Change Username</label>
+        <td><input type="textbox" name="name" required [(ngModel)]="name" id="picture" placeholder="Enter New Username"/></td>
+        <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!name"/></td>
+    </div><br>
 
-  <div class="form-group">
-    <label class="form-label">Change Phone Number</label>
-    <input type="text" class="form-control mb-1" value="">
-  </div>
 
-  <div class="form-group">
-    <label class="form-label">Change E-mail</label>
-    <input type="text" class="form-control mb-1" value="">
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">Change Address</label>
-    <input type="text" class="form-control mb-1" value="">
-  </div>
