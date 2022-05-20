@@ -118,7 +118,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 .list-group-item {
     transition-duration: 0.4s;
     border: .5px solid black;
-    
 }
 
 .list-group-item:hover {
