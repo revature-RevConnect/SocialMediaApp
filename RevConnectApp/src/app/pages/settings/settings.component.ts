@@ -12,6 +12,8 @@ export class SettingsComponent implements OnInit {
   @Output() onSubmitPicture: EventEmitter<UserSocial>=new EventEmitter();
   picture!:any;
   user!:any;
+  phone!:any;
+  address!:any;
   userSocial!:UserSocial;
 
   constructor(private api:ApiService, public auth:AuthService) { }
@@ -36,6 +38,16 @@ export class SettingsComponent implements OnInit {
 
   updateAboutMe(userSocial:UserSocial){
     this.api.updateAboutMe(userSocial).subscribe((data)=>this.user=data);
+    console.log(userSocial);
+  }
+
+  updatePhone(userSocial:UserSocial){
+    this.api.updatePhone(userSocial).subscribe((data)=>this.user=data);
+    console.log(userSocial);
+  }
+
+  updateAddress(userSocial:UserSocial){
+    this.api.updateAddress(userSocial).subscribe((data)=>this.user=data);
     console.log(userSocial);
   }
 
