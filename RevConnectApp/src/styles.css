@@ -44,5 +44,4 @@ input[type="checkbox"]:checked:before{
 .active {
     background-color: #212121 !important;
     color: #FFFFFF !important;
-    outline: 1px solid #FFFFFF !important;
 }

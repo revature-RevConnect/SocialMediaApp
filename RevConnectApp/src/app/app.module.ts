@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppComponent } from './app.component';
-import { DarkModeComponent } from './dark-mode/dark-mode.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -64,7 +63,7 @@ import { DisplayProfileComponent } from './components/display-profile/display-pr
     FormsModule,
     ReactiveFormsModule,
 
-    // Import the module into the application, with configuration
+    //Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-1kna-o7p.us.auth0.com',
       clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
