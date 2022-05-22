@@ -1,0 +1,64 @@
+.like-button {
+    font-size: 1rem;
+    padding: 5px 10px;
+    color: #585858;
+  }
+  
+  .liked {
+    font-weight: bold;
+    color: #1565c0;
+  }
+
+  * {
+    margin: 0px;
+    padding: 0px;
+}
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+    height:40px;
+    width:75px;
+    position:absolute;
+    right:0;
+    border-radius: 20px;
+    outline: none;
+    cursor:pointer;
+    background-color: black;
+    box-shadow: 0 2px 5px 1px grey;
+}
+
+input[type="checkbox"]:before{
+    content:"";
+    position: absolute;
+    height: 30px;
+    width:30px;
+    background-color: white;
+    top:5px;
+    left:5px;
+    border-radius:50%;
+}
+
+input[type="checkbox"]:checked:before{
+    transform: translate(100%);
+    background-color: white;
+    top:5px;
+    right:5px;
+}
+
+.active {
+    background-color: #212121 !important;
+    color: #FFFFFF !important;
+    outline: 1px solid #FFFFFF !important;
+}
+
+.testdiv {
+    width: 250px;
+    height: 250px;
+    background-color: red;
+}
+
+.testdiv1 {
+    width: 300px;
+    height: 250px;
+    background-color: rebeccapurple;
+}
