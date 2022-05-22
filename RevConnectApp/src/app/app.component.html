@@ -1,7 +1,5 @@
-
-
 <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
-    <app-login-button></app-login-button>
+    <app-app-loading></app-app-loading>
     
 </div>
 <ng-template #loaded>

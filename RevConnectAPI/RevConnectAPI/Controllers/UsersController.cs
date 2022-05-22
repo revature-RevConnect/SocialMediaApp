@@ -74,7 +74,7 @@ namespace RevConnectAPI.Controllers
         {
             var newUser = await _rc.Users
                         .Where(b => b.authID == user.authID).FirstAsync();
-            newUser.aboutMe = user.aboutMe;
+            newUser.phone = user.phone;
             await _rc.SaveChangesAsync();
 
             return new ContentResult() { StatusCode = 200 };
@@ -96,7 +96,7 @@ namespace RevConnectAPI.Controllers
         {
             var newUser = await _rc.Users
                         .Where(b => b.authID == user.authID).FirstAsync();
-            newUser.aboutMe = user.aboutMe;
+            newUser.address = user.address;
             await _rc.SaveChangesAsync();
 
             return new ContentResult() { StatusCode = 200 };
