@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RevConnectAPI.Database.DataAccess;
+using RevConnectAPI.Data.DataContext;
 
 #nullable disable
 
@@ -23,54 +23,47 @@ namespace RevConnectAPI.Database.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Comment", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Comment", b =>
                 {
                     b.Property<int>("commentID")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentID"), 1L, 1);
 
+                    b.Property<string>("authID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("body")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("postID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("userID")
+                    b.Property<int?>("postID")
                         .HasColumnType("int");
 
                     b.HasKey("commentID");
 
                     b.HasIndex("postID");
 
-                    b.HasIndex("userID");
-
                     b.ToTable("Comments", "RevConnect");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Like", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Like", b =>
                 {
                     b.Property<int>("likeID")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("likeID"), 1L, 1);
+
+                    b.Property<string>("authID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("commentID")
                         .HasColumnType("int");
 
                     b.Property<int?>("postID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("userID")
                         .HasColumnType("int");
 
                     b.HasKey("likeID");
@@ -79,47 +72,36 @@ namespace RevConnectAPI.Database.Migrations
 
                     b.HasIndex("postID");
 
-                    b.HasIndex("userID");
-
                     b.ToTable("Likes", "RevConnect");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Post", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Post", b =>
                 {
                     b.Property<int>("postID")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("postID"), 1L, 1);
 
+                    b.Property<string>("authID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("body")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("date")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("image")
+                    b.Property<string>("title")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("userID")
-                        .HasColumnType("int");
 
                     b.HasKey("postID");
-
-                    b.HasIndex("userID");
 
                     b.ToTable("Posts", "RevConnect");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.User", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.User", b =>
                 {
                     b.Property<int>("userID")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userID"), 1L, 1);
@@ -127,93 +109,70 @@ namespace RevConnectAPI.Database.Migrations
                     b.Property<string>("aboutMe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("firstName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<bool>("active")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("lastName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("profilePicture")
+                    b.Property<string>("authID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("github")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("linkedin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("profilePicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("twitter")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("userID");
 
                     b.ToTable("Users", "RevConnect");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Comment", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Comment", b =>
                 {
-                    b.HasOne("RevConnectAPI.Database.Models.Post", null)
+                    b.HasOne("RevConnectAPI.Data.Models.Post", null)
                         .WithMany("postComments")
-                        .HasForeignKey("postID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RevConnectAPI.Database.Models.User", null)
-                        .WithMany("userComments")
-                        .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("postID");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Like", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Like", b =>
                 {
-                    b.HasOne("RevConnectAPI.Database.Models.Comment", null)
+                    b.HasOne("RevConnectAPI.Data.Models.Comment", null)
                         .WithMany("commentLikes")
                         .HasForeignKey("commentID");
 
-                    b.HasOne("RevConnectAPI.Database.Models.Post", null)
+                    b.HasOne("RevConnectAPI.Data.Models.Post", null)
                         .WithMany("postLikes")
                         .HasForeignKey("postID");
-
-                    b.HasOne("RevConnectAPI.Database.Models.User", null)
-                        .WithMany("userLikes")
-                        .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Post", b =>
-                {
-                    b.HasOne("RevConnectAPI.Database.Models.User", null)
-                        .WithMany("userPosts")
-                        .HasForeignKey("userID");
-                });
-
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Comment", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Comment", b =>
                 {
                     b.Navigation("commentLikes");
                 });
 
-            modelBuilder.Entity("RevConnectAPI.Database.Models.Post", b =>
+            modelBuilder.Entity("RevConnectAPI.Data.Models.Post", b =>
                 {
                     b.Navigation("postComments");
 
                     b.Navigation("postLikes");
-                });
-
-            modelBuilder.Entity("RevConnectAPI.Database.Models.User", b =>
-                {
-                    b.Navigation("userComments");
-
-                    b.Navigation("userLikes");
-
-                    b.Navigation("userPosts");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,11 @@
+.btn {
+    transition-duration: 0.4s;
+    border: 2px solid red;
+  }
+  
+.btn:hover {
+    background-color: red; 
+    border-color: red;
+    color: white;
+
+}

@@ -1,1 +1,5 @@
-<p>user-profile works!</p>
+<app-display-profile
+  *ngIf="auth.user$ | async as user"
+  [user]="user">
+</app-display-profile>
+      

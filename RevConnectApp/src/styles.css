@@ -7,3 +7,42 @@ body
 {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+    height:40px;
+    width:70px;
+    right:0;
+    border-radius: 20px;
+    outline: none;
+    cursor:pointer;
+    background-color: black;
+    box-shadow: 0 2px 5px 1px grey;
+}
+
+input[type="checkbox"]:before{
+    content:"";
+    position: absolute;
+    height: 30px;
+    width:30px;
+    background-color: white;
+    top:5px;
+    right: 670px;
+    border-radius:50%;
+}
+
+input[type="checkbox"]:checked:before{
+    transform: translate(100%);
+    background-color: white;
+    top:5px;
+    right:676px;
+}
+
+.active {
+    background-color: #212121 !important;
+    color: #FFFFFF !important;
+    outline: 1px solid #FFFFFF !important;
+}

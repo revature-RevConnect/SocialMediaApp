@@ -1,3 +1,4 @@
+<div class="header">
 <ul class="nav justify-content-center">
     <li class="nav-item">
       <a class="nav-link active" routerLink="" routerLinkActive="active link">Home</a>
@@ -15,4 +16,12 @@
     <app-login-button *ngIf="(auth.isAuthenticated$ | async ) === false" ></app-login-button>
     <!-- logout button when the user is logged in and authenticated -->
     <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
+
+    <input type = "checkbox" id = "toggle" (click) = "changeMode()">
   </ul>
+  
+  <nav class="nav justify-content-left">
+      <a class="navbar-brand" routerLink="">
+      <img src="./../../assets/img/revature-logo.png" alt="Revature Logo" width="200" height="120">
+      </a>
+ 

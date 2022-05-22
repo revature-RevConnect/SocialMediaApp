@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 // Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
-
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppComponent } from './app.component';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
@@ -22,6 +20,16 @@ import { ChatroomComponent } from './pages/chatroom/chatroom.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { AppLoadingComponent } from './components/app-loading/app-loading.component';
+import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
+import { SocialLinksComponent } from './components/social-links/social-links.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
+import { TopPostComponent } from './components/top-post/top-post.component';
+import { GeneralComponent } from './components/general/general.component';
+import { DisplaySettingsGeneralComponent } from './components/display-settings-general/display-settings-general.component';
+import { DisplaySettingsAboutmeComponent } from './components/display-settings-aboutme/display-settings-aboutme.component';
+import { DisplaySettingsSocialLinksComponent } from './components/display-settings-social-links/display-settings-social-links.component';
+import { DisplaySettingsTopPostComponent } from './components/display-settings-top-post/display-settings-top-post.component';
+import { DisplayProfileComponent } from './components/display-profile/display-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,17 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
     ChatroomComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    AppLoadingComponent
+    AppLoadingComponent,
+    DarkModeComponent,
+    SocialLinksComponent,
+    AboutMeComponent,
+    TopPostComponent,
+    GeneralComponent,
+    DisplaySettingsGeneralComponent,
+    DisplaySettingsAboutmeComponent,
+    DisplaySettingsSocialLinksComponent,
+    DisplaySettingsTopPostComponent,
+    DisplayProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +67,29 @@ import { AppLoadingComponent } from './components/app-loading/app-loading.compon
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-1kna-o7p.us.auth0.com',
-      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y'
+      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
+      audience: "https://revconnect-api-endpoint/",
+      apiUri: "https://revconnect.azurewebsites.net/",
+      appUri: "http://localhost:4200",
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: "https://revconnect.azurewebsites.net/*",
+            tokenOptions: {
+              audience: 'https://revconnect-api-endpoint/',
+            }
+          }
+        ]
+      }
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
