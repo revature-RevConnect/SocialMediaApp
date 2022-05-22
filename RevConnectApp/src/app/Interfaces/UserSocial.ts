@@ -12,3 +12,8 @@ export interface UserSocial{
     github?:any,
     activer?:boolean,
   }
+  
+  export interface ChatUser {
+    name?: string;
+    connectionId?: string;
+}
