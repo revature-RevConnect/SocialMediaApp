@@ -114,3 +114,6 @@ Mockaroo
 Static Web Hosting
 - Dan Gagne
 
+Frontend Design (Home, User Profile, Settings)
+- Phirith 
+
