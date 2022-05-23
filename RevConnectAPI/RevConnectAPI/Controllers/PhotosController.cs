@@ -37,7 +37,7 @@ public class PhotosController : Controller
     public async Task<ActionResult<User>> upload([FromQuery] string authID, IFormFile postedFile)
     {
 
-        string path = $"https://dangagne.blob.core.windows.net/revconnect/{postedFile.FileName}";
+        string path = $"https://dangagne.blob.core.windows.net/revconnect/{authID}";
         var user = await _rc.Users
                 .Where(b => b.authID == authID).FirstAsync();
         user.profilePicture = path;
@@ -45,7 +45,7 @@ public class PhotosController : Controller
 
 
         BlobContainerClient container = new BlobContainerClient(_config._connection, "revconnect");
-        BlobClient blob = container.GetBlobClient(postedFile.FileName);
+        BlobClient blob = container.GetBlobClient(authID);
         await blob.UploadAsync(
             postedFile.OpenReadStream(),
             new BlobHttpHeaders
