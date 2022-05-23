@@ -43,6 +43,7 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.signalrClientService.closeConnection();
   }
   
   connectHub(name?: string) {
