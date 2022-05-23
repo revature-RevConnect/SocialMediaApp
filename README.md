@@ -44,7 +44,6 @@ To-do list:
 
 
 ## Usage
-
 - Create an account 
 - View posts in Post Feed
 - Like a post
@@ -74,8 +73,6 @@ Chat Room
 - Cameron Merkh   
 - Zhixin He
 
-
-
 Dark Mode
 - Kevin Lee
 - Brian Keener
@@ -94,10 +91,14 @@ Docker
 
 Create a Profile
 - Aureliano Silva
+- Phirith Pheak
 
 Upload a Profile Picture
 - Christian Cubides
 - Dan Gagne
+
+Settings 
+- Phirith Pheak
 
 Unit Testing
 - Diego De Los Santos
@@ -106,6 +107,7 @@ Unit Testing
 
 Auth0
 - Andrew Krisnawan
+- Phirith Pheak
 - Tahereh Rastegarzare
 - Tuan Anh Nguyen
 - Tryggve Rogness
