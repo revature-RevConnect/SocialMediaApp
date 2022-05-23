@@ -20,14 +20,15 @@
 name: Build and deploy ASP.Net Core app to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name    # set this to the name of your Azure Web App
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '5'                 # set this to the .NET Core version to use
+  AZURE_WEBAPP_NAME: 'TestRevConnect'   # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: './Build'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '6'                 # set this to the .NET Core version to use
 
 on:
- # push:
-   #branches:
-   #  - main
+  push:
+   branches: [main]
+   paths:
+      -'RevConnectAPI/*'  
   workflow_dispatch:
 
 jobs:
@@ -51,10 +52,22 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ./RevConnectAPI/RevConnectAPI.sln --configuration Release
+        
+      - name: Test
+        run: dotnet test ./RevConnectAPI/RevConnectAPI.Tests/RevConnectAPI.Tests.csproj --logger "trx;LogFileName=test-results.trx" || true
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: DotNET Tests
+          path: "**/test-results.trx"                            
+          reporter: dotnet-trx
+          fail-on-error: true
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ./RevConnectAPI/RevConnectAPI.sln  -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -79,6 +92,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          app-name: 'TestRevConnect'
+          publish-profile: ${{ secrets.DAN_AZURE_PROFILE}}
+          package: .
