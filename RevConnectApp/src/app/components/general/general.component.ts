@@ -51,6 +51,21 @@ export class GeneralComponent implements OnInit {
     console.log(userSocial);
   }
 
+  updateLinkedin(userSocial:UserSocial){
+    this.api.updateLinkedin(userSocial).subscribe((data)=>this.user=data);
+    console.log(userSocial);
+  }
+
+  updateTwitter(userSocial:UserSocial){
+    this.api.updateTwitter(userSocial).subscribe((data)=>this.user=data);
+    console.log(userSocial);
+  }
+
+  updateGithub(userSocial:UserSocial){
+    this.api.updateGithub(userSocial).subscribe((data)=>this.user=data);
+    console.log(userSocial);
+  }
+
   showAboutMe():void{
     this.ss.toggleShowAboutMe();
     this.ss.toggleShowGeneral();
