@@ -24,8 +24,6 @@
                    <app-display-settings-aboutme
                    *ngIf="auth.user$ | async as user"
                    [user]="user"
-                   (onSubmitPicture)="updateUserPicture($event)"
-                   (onSubmitUsername)="updateUsername($event)"
                    (onSubmitAboutMe)="updateAboutMe($event)">
                   </app-display-settings-aboutme>
     <div class="text-right mt-3">

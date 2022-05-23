@@ -14,12 +14,18 @@ export class DisplaySettingsGeneralComponent implements OnInit {
   @Output() onSubmitAboutMe: EventEmitter<UserSocial>=new EventEmitter();
   @Output() onSubmitPhone: EventEmitter<UserSocial>=new EventEmitter();
   @Output() onSubmitAddress: EventEmitter<UserSocial>=new EventEmitter();
+  @Output() onSubmitLinkedin: EventEmitter<UserSocial>=new EventEmitter();
+  @Output() onSubmitTwitter: EventEmitter<UserSocial>=new EventEmitter();
+  @Output() onSubmitGithub: EventEmitter<UserSocial>=new EventEmitter();
   userSocial!:UserSocial;
   picture!:any;
   name!:any;
   aboutMe!:any;
   phone!:any;
   address!:any;
+  linkedin!:any;
+  twitter!:any;
+  github!:any;
   postedFile!:File;
 
   constructor(private api:ApiService) { }
@@ -77,6 +83,54 @@ export class DisplaySettingsGeneralComponent implements OnInit {
     }
     console.log(this.userSocial);
     this.onSubmitAddress.emit(this.userSocial);
+  }
+
+  submitLinkedin(){
+    console.log(this.user);
+    this.userSocial={
+      authID:this.user.sub,
+      name:this.userSocial.name,
+      profilePicture:this.userSocial.profilePicture,
+      aboutMe:this.userSocial.aboutMe,
+      phone:this.userSocial.phone,
+      address:this.userSocial.address,
+      linkedin:this.linkedin
+    }
+    console.log(this.userSocial);
+    this.onSubmitLinkedin.emit(this.userSocial);
+  }
+
+  submitTwitter(){
+    console.log(this.user);
+    this.userSocial={
+      authID:this.user.sub,
+      name:this.userSocial.name,
+      profilePicture:this.userSocial.profilePicture,
+      aboutMe:this.userSocial.aboutMe,
+      phone:this.userSocial.phone,
+      address:this.userSocial.address,
+      linkedin:this.userSocial.linkedin,
+      twitter:this.twitter
+    }
+    console.log(this.userSocial);
+    this.onSubmitTwitter.emit(this.userSocial);
+  }
+
+  submitGithub(){
+    console.log(this.user);
+    this.userSocial={
+      authID:this.user.sub,
+      name:this.userSocial.name,
+      profilePicture:this.userSocial.profilePicture,
+      aboutMe:this.userSocial.aboutMe,
+      phone:this.userSocial.phone,
+      address:this.userSocial.address,
+      linkedin:this.userSocial.linkedin,
+      twitter:this.userSocial.twitter,
+      github:this.github
+    }
+    console.log(this.userSocial);
+    this.onSubmitGithub.emit(this.userSocial);
   }
 
   onFileSelected(event: any) 

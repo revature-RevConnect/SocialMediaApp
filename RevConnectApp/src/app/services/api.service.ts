@@ -53,6 +53,18 @@ export class ApiService {
     return this.http.put<UserSocial>(`${url}/Users/address`, user ,httpOptions);
   }
 
+  updateLinkedin(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/linkedin`, user ,httpOptions);
+  }
+
+  updateTwitter(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/twitter`, user ,httpOptions);
+  }
+
+  updateGithub(user:UserSocial):Observable<UserSocial>{
+    return this.http.put<UserSocial>(`${url}/Users/github`, user ,httpOptions);
+  }
+
   getCurrentUser(authID:any):Observable<UserSocial>{
     return this.http.get<UserSocial>(`${url}/Users/${authID}`);
   }
