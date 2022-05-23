@@ -46,7 +46,7 @@ To-do list:
 ## Usage
 
 - Create an account 
-- Go to Postfeed to view other posts 
+- View posts in Post Feed
 - Like a post
 - Create a comment for a post
 - Create a post 
