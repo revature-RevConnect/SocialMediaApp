@@ -11,6 +11,7 @@ namespace RevConnectAPI.Data.Models
         public int commentID { get; set; }
         public string? body { get; set; }
         public string authID { get; set; }
+        public int? postID { get; set; }
         public List<Like>? commentLikes { get; set; }
     }
 }

@@ -38,24 +38,24 @@ export class SettingsComponent implements OnInit {
     console.log(this.userSocial);
   }
 
-  updateUserPicture(photo:any){
-    this.api.postPicture(photo).subscribe((data)=>this.user=data);
-  }
+  // updateUserPicture(photo:any){
+  //   this.api.postPicture(photo).subscribe((data)=>this.user=data);
+  // }
 
-  updateUsername(userSocial:UserSocial){
-    this.api.updateUsername(userSocial).subscribe((data)=>this.user=data);
-    console.log(userSocial);
-  }
+  // updateUsername(userSocial:UserSocial){
+  //   this.api.updateUsername(userSocial).subscribe((data)=>this.user=data);
+  //   console.log(userSocial);
+  // }
 
-  updateAboutMe(userSocial:UserSocial){
-    this.api.updateAboutMe(userSocial).subscribe((data)=>this.user=data);
-    console.log(userSocial);
-  }
+  // updateAboutMe(userSocial:UserSocial){
+  //   this.api.updateAboutMe(userSocial).subscribe((data)=>this.user=data);
+  //   console.log(userSocial);
+  // }
 
-  updatePhone(userSocial:UserSocial){
-    this.api.updatePhone(userSocial).subscribe((data)=>this.user=data);
-    console.log(userSocial);
-  }
+  // updatePhone(userSocial:UserSocial){
+  //   this.api.updatePhone(userSocial).subscribe((data)=>this.user=data);
+  //   console.log(userSocial);
+  // }
 
   updateAddress(userSocial:UserSocial){
     this.api.updateAddress(userSocial).subscribe((data)=>this.user=data);

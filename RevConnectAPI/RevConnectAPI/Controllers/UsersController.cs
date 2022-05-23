@@ -101,6 +101,39 @@ namespace RevConnectAPI.Controllers
 
             return new ContentResult() { StatusCode = 200 };
         }
+
+                [HttpPut("github")]
+        public async Task<ActionResult<User>> ChangeGithub(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.github = user.github;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
+
+        [HttpPut("twitter")]
+        public async Task<ActionResult<User>> ChangeTwitter(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.twitter = user.twitter;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
+
+        [HttpPut("linkedin")]
+        public async Task<ActionResult<User>> ChangeLinkedIn(User user)
+        {
+            var newUser = await _rc.Users
+                        .Where(b => b.authID == user.authID).FirstAsync();
+            newUser.linkedin = user.linkedin;
+            await _rc.SaveChangesAsync();
+
+            return new ContentResult() { StatusCode = 200 };
+        }
     }
 
 }
