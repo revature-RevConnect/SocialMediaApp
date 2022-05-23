@@ -59,3 +59,45 @@
     color: white;
     width: fit-content;
 }
+
+.container-p-y {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
+}
+
+.container-p-y2 {
+    border-style: inset;
+    border-width: 3px;
+    border-color: #F26925;
+    height: 300px;
+    padding-left: 30px;
+}
+
+
+.container-p-y3 {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 825px;
+}
+    
+
+.btn {
+    transition-duration: 0.4s;
+   
+    font-weight: bold;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
+}
+
+.mb-4 {
+    text-align: center;
+}
+    
