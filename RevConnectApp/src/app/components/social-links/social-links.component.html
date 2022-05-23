@@ -20,21 +20,14 @@
         </div>
         <div class="col-md-9">
           <div class="tab-content">
-            <div id="account-general">
-  
-                <div class="form-group">
-                  <label class="form-label">Twitter</label>
-                  <input type="text" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">LinkedIn</label>
-                  <input type="text" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">GitHub</label>
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
+            <app-display-settings-social-links
+            *ngIf="auth.user$ | async as user"
+            [user]="user"
+            (onSubmitLinkedin)="updateLinkedin($event)"
+            (onSubmitTwitter)="updateTwitter($event)"
+            (onSubmitGithub)="updateGithub($event)">
+          </app-display-settings-social-links>
+            
     <div class="text-right mt-3">
       <button type="button" class="btn">Save changes</button>&nbsp;
       <button type="button" class="btn">Cancel</button>

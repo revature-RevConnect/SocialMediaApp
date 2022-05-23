@@ -1,1 +1,33 @@
-<p>display-settings-social-links works!</p>
+<div class="twitter">
+    <h5>Current Twitter: {{userSocial.twitter}}</h5>
+    <form #twitterForm="ngForm" (ngSubmit)="submitTwitter(); twitterForm.reset()">
+        <div>
+            <label for="ID">Change Twitter</label>
+            <td><input type="textbox" name="twitter" required [(ngModel)]="twitter" id="twitter" placeholder="Enter New Twitter"/></td>
+            <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!twitter"/></td>
+        </div>
+    </form><br>
+    </div>
+
+<div class="linkedin">
+        <h5>Current Linkedin: {{userSocial.linkedin}}</h5>
+        <form #linkedinForm="ngForm" (ngSubmit)="submitLinkedin(); linkedinForm.reset()">
+            <div>
+                <label for="ID">Change Linkedin</label>
+                <td><input type="textbox" name="linkedin" required [(ngModel)]="linkedin" id="linkedin" placeholder="Enter New Linkedin"/></td>
+                <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!linkedin"/></td>
+            </div>
+        </form><br>
+        </div>
+
+<div class="github">
+            <h5>Current GitHub: {{userSocial.github}}</h5>
+            <form #githubForm="ngForm" (ngSubmit)="submitGithub(); githubForm.reset()">
+                <div>
+                    <label for="ID">Change Linkedin</label>
+                    <td><input type="textbox" name="github" required [(ngModel)]="github" id="github" placeholder="Enter New Github"/></td>
+                    <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!github"/></td>
+                </div>
+            </form><br>
+            </div>
+

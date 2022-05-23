@@ -50,7 +50,6 @@ export class GeneralComponent implements OnInit {
     this.api.updateAddress(userSocial).subscribe((data)=>this.user=data);
     console.log(userSocial);
   }
-
   showAboutMe():void{
     this.ss.toggleShowAboutMe();
     this.ss.toggleShowGeneral();
