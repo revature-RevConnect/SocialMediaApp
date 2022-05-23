@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UserSocial } from 'src/app/Interfaces/UserSocial';
 import { AuthService } from '@auth0/auth0-angular';
+import { SwitchSettingsService } from 'src/app/services/switch-settings.service';
 
 @Component({
   selector: 'app-about-me',
@@ -14,7 +15,7 @@ export class AboutMeComponent implements OnInit {
   user!:any;
   userSocial!:UserSocial;
 
-  constructor(private api:ApiService, public auth:AuthService) { }
+  constructor(private api:ApiService, public auth:AuthService, private ss:SwitchSettingsService) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe((data)=>this.user=data);
@@ -37,5 +38,20 @@ export class AboutMeComponent implements OnInit {
   updateAboutMe(userSocial:UserSocial){
     this.api.updateAboutMe(userSocial).subscribe((data)=>this.user=data);
     console.log(userSocial);
+  }
+
+  showGeneral():void{
+    this.ss.toggleShowGeneral();
+    this.ss.toggleShowAboutMe();
+  }
+
+  showSocialLinks():void{
+    this.ss.toggleShowSocialLinks();
+    this.ss.toggleShowAboutMe();
+  }
+
+  showTopPost():void{
+    this.ss.toggleShowTopPost();
+    this.ss.toggleShowAboutMe();
   }
 }

@@ -1,0 +1,14 @@
+<!--<div>{{commentAuthor.name}}: {{comment.body}}</div>-->
+<div *ngIf="commentAuthor!=undefined">
+<ul class="fb-comments">
+    <li>
+        <a href="#" class="cmt-thumb">
+            <img [src]="commentAuthor.profilePicture" alt="">
+        </a>
+        <div class="cmt-details">
+            <span>{{comment.body}}</span>
+            <i><p>-{{commentAuthor.name}}  </p></i>
+        </div>
+    </li>
+</ul>
+</div>

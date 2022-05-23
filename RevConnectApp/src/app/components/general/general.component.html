@@ -8,10 +8,14 @@
       <div class="row no-gutters row-bordered row-border-light">
         <div class="col-md-3 pt-0">
           <div class="list-group list-group-flush account-settings-links">
-            <a class="list-group-item list-group-item-action" data-toggle="list">General</a>
+            <button class="btn">General</button>
+            <button class="btn" (click)="showAboutMe()">About Me</button>
+            <button class="btn" (click)="showSocialLinks()">Social Links</button>
+            <button class="btn" (click)="showTopPost()">Top Post</button>
+           <!-- <a class="list-group-item list-group-item-action" data-toggle="list">General</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="about-me">About Me</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="social-links">Social Links</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="top-post">Top Post</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="top-post">Top Post</a>-->
           </div>
         </div>
         <div class="col-md-9">

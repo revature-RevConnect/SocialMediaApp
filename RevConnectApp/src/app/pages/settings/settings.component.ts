@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { UserSocial } from 'src/app/Interfaces/UserSocial';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { ApiService } from 'src/app/services/api.service';
+import { SwitchSettingsService } from 'src/app/services/switch-settings.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -15,11 +17,20 @@ export class SettingsComponent implements OnInit {
   phone!:any;
   address!:any;
   userSocial!:UserSocial;
+  subscription!:Subscription;
+  showGeneral:boolean=true;
+  showAboutMe:boolean=false;
+  showSocialLinks:boolean=false;
+  showTopPost:boolean=false;
 
-  constructor(private api:ApiService, public auth:AuthService) { }
+  constructor(private api:ApiService, public auth:AuthService, private switchSettingsService:SwitchSettingsService) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe((data)=>this.user=data);
+    this.subscription=this.switchSettingsService.onToggleShowGeneral().subscribe(value=>this.showGeneral=value)
+    this.subscription=this.switchSettingsService.onToggleShowAboutMe().subscribe(value=>this.showAboutMe=value)
+    this.subscription=this.switchSettingsService.onToggleShowSocialLinks().subscribe(value=>this.showSocialLinks=value)
+    this.subscription=this.switchSettingsService.onToggleShowTopPost().subscribe(value=>this.showTopPost=value)
   }
 
   getUserProfile(){

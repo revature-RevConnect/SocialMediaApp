@@ -1,0 +1,109 @@
+<div class="panel" *ngIf="postAuthor!=undefined">
+    <div class="panel-body">
+        <div class="fb-user-thumb">
+            <img [src]="postAuthor.profilePicture" alt="">
+        </div>
+        <div class="fb-user-details">
+            <h3 style="font-size: 26px;">{{post.title}}</h3>
+            
+            <!--<p>7 minutes ago near Minnesota, USA</p>-->
+        </div>
+        <div class="clearfix"></div>
+        <p class="fb-user-status" style="font-size: 20px;">{{post.body}}
+        </p>
+        <div class="fb-user-status">
+        <i>-{{postAuthor.name}}</i>
+
+        <small *ngIf="postLikes!=undefined">
+            <app-likes
+            [postLikes]="postLikes"
+            ></app-likes></small>
+        </div>
+            
+        <div class="fb-status-container fb-border">
+            <div class="fb-time-action">
+
+                <app-add-like
+                (onSubmitLike)="submitLike($event)"
+                [postLikes]="postLikes"
+                [authID]="authID"
+                ></app-add-like>
+
+                <span>-</span>
+
+                <app-commentfeed 
+                *ngIf="postComments!=undefined"
+                [comments]="postComments">   
+                </app-commentfeed>
+
+                <app-add-comment 
+                (onSubmitComment)="submitComment($event)"
+                [authID]="authID"
+                [postID]="post.postID"
+                ></app-add-comment>
+
+            </div>
+        </div>
+  
+<!--     <div class="fb-status-container fb-border fb-gray-bg">
+            <div class="fb-time-action like-info">
+                <a href="#">Jhon Due,</a>
+                <a href="#">Danieal Kalion</a>
+                <span>and</span>
+                <a href="#">40 more</a>
+                <span>like this</span>
+            </div>
+  
+            <ul class="fb-comments">
+                <li>
+                    <a href="#" class="cmt-thumb">
+                        <img src="https://pbs.twimg.com/profile_images/913032062084407301/jtkX26p1.jpg" alt="">
+                    </a>
+                    <div class="cmt-details">
+                        <a href="#">Jhone due</a>
+                        <span> is world famous professional photographer.  with forward thinking clients to create beautiful, </span>
+                        <p>40 minutes ago - <a href="#" class="like-link">Like</a></p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="cmt-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/28702f20334673.562e9c1e0d9d2.png" alt="">
+                    </a>
+                    <div class="cmt-details">
+                        <a href="#">Tawseef</a>
+                        <span> is world famous professional photographer.  with forward thinking clients to create beautiful, </span>
+                        <p>34 minutes ago - <a href="#" class="like-link">Like</a></p>
+                    </div>
+                </li>
+  
+                <li>
+                    <a href="#" class="cmt-thumb">
+                        <img src="https://assets.glassesdirect.co.uk/media/help/glasses-for-oval-faceshape-01.png" alt="">
+                    </a>
+                    <div class="cmt-details">
+                        <a href="#">Jhone due</a>
+                        <span> is world famous professional photographer.   </span>
+                        <p>15 minutes ago - <a href="#" class="like-link">Like</a></p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="cmt-thumb">
+                        <img src="https://th.bing.com/th/id/OIP.oJ_hw82u7qlTw1cO9oyqQgAAAA?pid=ImgDet&w=400&h=522&rs=1" alt="">
+                    </a>
+                    <div class="cmt-details">
+                        <a href="#">Tawseef</a>
+                        <span> thinking clients to create beautiful world famous professional photographer.  </span>
+                        <p>2 minutes ago - <a href="#" class="like-link">Like</a></p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="cmt-thumb">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+                    </a>
+                    <div class="cmt-form">
+                        <textarea class="form-control" placeholder="Write a comment..." name=""></textarea>
+                    </div>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>-->
