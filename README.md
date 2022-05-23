@@ -45,7 +45,13 @@ To-do list:
 
 ## Usage
 
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+- Create an account 
+- Go to Postfeed to view other posts 
+- Like a post
+- Create a comment for a post
+- Create a post 
+- Toggle dark mode
+
 
 ## Contributors
 
