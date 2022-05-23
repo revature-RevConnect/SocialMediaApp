@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-
+import { DarkmodeService } from 'src/app/services/darkmode.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,28 +8,13 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: AuthService ) { }
+  constructor(public auth: AuthService, private dark:DarkmodeService ) { }
 
   ngOnInit(): void {
   }
-  darkOn : boolean = false;
+ 
 
   changeMode() {
-    let elements = document.getElementsByTagName("*");
-    if(this.darkOn == true)
-    {
-      this.darkOn = false;
-      for (let index = 0; index < elements.length; index++) {
-      elements[index].classList.remove("active");
-      }
-    }
-    else 
-    {
-      this.darkOn = true;
-      for (let index = 0; index < elements.length; index++) {
-      elements[index].classList.add("active");
-      }
-    }
+    this.dark.changeMode()
   }
-
 }
