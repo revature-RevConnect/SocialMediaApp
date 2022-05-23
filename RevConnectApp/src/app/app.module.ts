@@ -19,7 +19,6 @@ import { ChatroomComponent } from './pages/chatroom/chatroom.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { AppLoadingComponent } from './components/app-loading/app-loading.component';
-import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
 import { SocialLinksComponent } from './components/social-links/social-links.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { TopPostComponent } from './components/top-post/top-post.component';
@@ -29,11 +28,18 @@ import { DisplaySettingsAboutmeComponent } from './components/display-settings-a
 import { DisplaySettingsSocialLinksComponent } from './components/display-settings-social-links/display-settings-social-links.component';
 import { DisplaySettingsTopPostComponent } from './components/display-settings-top-post/display-settings-top-post.component';
 import { DisplayProfileComponent } from './components/display-profile/display-profile.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostfeedComponent } from './components/postfeed/postfeed.component';
+import { PostComponent } from './components/post/post.component';
+import { AddLikeComponent } from './components/add-like/add-like.component';
+import { LikesComponent } from './components/likes/likes.component';
+import { CommentfeedComponent } from './components/commentfeed/commentfeed.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DarkModeComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
@@ -43,7 +49,6 @@ import { DisplayProfileComponent } from './components/display-profile/display-pr
     LoginButtonComponent,
     LogoutButtonComponent,
     AppLoadingComponent,
-    DarkModeComponent,
     SocialLinksComponent,
     AboutMeComponent,
     TopPostComponent,
@@ -52,7 +57,15 @@ import { DisplayProfileComponent } from './components/display-profile/display-pr
     DisplaySettingsAboutmeComponent,
     DisplaySettingsSocialLinksComponent,
     DisplaySettingsTopPostComponent,
-    DisplayProfileComponent
+    DisplayProfileComponent,
+    AddPostComponent,
+    PostfeedComponent,
+    PostComponent,
+    AddLikeComponent,
+    LikesComponent,
+    CommentfeedComponent,
+    CommentComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,18 +77,35 @@ import { DisplayProfileComponent } from './components/display-profile/display-pr
     ReactiveFormsModule,
 
     //Import the module into the application, with configuration
+    // AuthModule.forRoot({
+    //   domain: 'dev-1kna-o7p.us.auth0.com',
+    //   clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
+    //   audience: "https://revconnect-api-endpoint/",
+    //   apiUri: "https://revconnect.azurewebsites.net/",
+    //   appUri: "http://localhost:4200",
+    //   httpInterceptor: {
+    //     allowedList: [
+    //       {
+    //         uri: "https://revconnect.azurewebsites.net/*",
+    //         tokenOptions: {
+    //           audience: 'https://revconnect-api-endpoint/',
+    //         }
+    //       }
+    //     ]
+    //   }
+    // }),
     AuthModule.forRoot({
-      domain: 'dev-1kna-o7p.us.auth0.com',
-      clientId: '4mbrJbRZJKwRbCK5p3zByC9HB6httr9Y',
-      audience: "https://revconnect-api-endpoint/",
-      apiUri: "https://revconnect.azurewebsites.net/",
+      domain: 'dev-d63d2wc5.us.auth0.com',
+      clientId: 'P4JlEHEDUAuT1qZ8EMlTMUckKT9pIKR5',
+      audience: 'https://TestRevConnect/api',
+      apiUri: "https://testrevconnect.azurewebsites.net",
       appUri: "http://localhost:4200",
       httpInterceptor: {
         allowedList: [
           {
-            uri: "https://revconnect.azurewebsites.net/*",
-            tokenOptions: {
-              audience: 'https://revconnect-api-endpoint/',
+            uri:'https://testrevconnect.azurewebsites.net/*',
+            tokenOptions:{
+              audience: 'https://TestRevConnect/api'
             }
           }
         ]

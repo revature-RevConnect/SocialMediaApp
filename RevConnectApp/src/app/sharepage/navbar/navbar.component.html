@@ -17,7 +17,7 @@
     <!-- logout button when the user is logged in and authenticated -->
     <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
 
-    <input type = "checkbox" id = "toggle" (click) = "changeMode()">
+    <li><input type = "checkbox" id = "toggle" (click) = "changeMode()"></li>
   </ul>
   
   <nav class="nav justify-content-left">
