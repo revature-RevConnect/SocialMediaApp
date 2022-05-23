@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using RevConnectAPI.Data.DataContext;
+using RevConnectAPI.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,8 +40,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.Authority = "https://dev-1kna-o7p.us.auth0.com/";
-    options.Audience = "https://revconnect-api-endpoint/";
+    options.Authority = "https://dev-d63d2wc5.us.auth0.com/";
+    options.Audience = "https://TestRevConnect/api";
 });
 
 // Adding Auth0 Config to Swagger
@@ -74,9 +75,18 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+string connection = builder.Configuration.GetConnectionString("RevConnectPhoto");
+//string connection = builder.Configuration.GetConnectionString("Photo");
+
+//sets up blobconfig needed to access blob storage in photoscontroller
+builder.Services.AddSingleton<BlobConfig>(_ => new BlobConfig()
+{
+    _connection = connection
+});
+
 builder.Services.AddDbContext<RevConnectContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TestRevConnect"));
 });
 
 var app = builder.Build();
