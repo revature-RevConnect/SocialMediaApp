@@ -75,7 +75,7 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    //Phirith's Auth0
     //Import the module into the application, with configuration
     // AuthModule.forRoot({
     //   domain: 'dev-1kna-o7p.us.auth0.com',

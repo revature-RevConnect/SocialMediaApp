@@ -25,9 +25,22 @@ namespace RevConnectAPI.Controllers
             return likes.ToList();
         }
         [HttpPost("post")]
-        public async Task<ActionResult<Like>> LikePost(Like newLike)
+        public async Task <ActionResult<Like>> LikePost(Like newLike)
         {
-            await _rc.Likes.AddRangeAsync(newLike);
+            var likeExists =await _rc.Likes.
+                Where(b => b.postID == newLike.postID && b.authID == newLike.authID).FirstOrDefaultAsync();
+
+            if (likeExists != null)
+            {
+                _rc.Likes.Remove(likeExists);
+                await _rc.SaveChangesAsync();
+                return new Like() { likeID = -1, authID=likeExists.authID };
+            }
+            else
+            {
+                await _rc.Likes.AddRangeAsync(newLike);
+            }
+            //await _sc.Likes.AddRangeAsync(newLike);
 
             await _rc.SaveChangesAsync();
             return newLike;

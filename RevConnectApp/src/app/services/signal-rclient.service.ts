@@ -36,6 +36,11 @@ export class SignalRClientService {
     });
     this.chatMessageHandler();
   }
+
+  closeConnection() {
+    this.connection.stop().then(res => { console.log("Connection stopped with return status: " + res); });
+  }
+  
   chatMessageHandler() {
     this.connection.on("ReceiveMessage", (receiver, sender, message) => {
       this.messenger.next({

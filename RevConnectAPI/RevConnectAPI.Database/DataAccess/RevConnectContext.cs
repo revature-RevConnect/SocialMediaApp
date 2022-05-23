@@ -18,7 +18,7 @@ namespace RevConnectAPI.Data.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("RevConnect");
+            modelBuilder.HasDefaultSchema("TestRevConnect");
         }
     }
 }
