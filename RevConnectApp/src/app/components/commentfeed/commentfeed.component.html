@@ -1,0 +1,7 @@
+<a href="#" title="Leave a comment"  (click)="showComments=!showComments">Comments</a>
+<div *ngIf="showComments">
+    <app-comment 
+    *ngFor="let comment of comments"
+    [comment]="comment"
+    ></app-comment>
+</div>

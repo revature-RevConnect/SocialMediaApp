@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchSettingsService } from 'src/app/services/switch-settings.service';
 
 @Component({
   selector: 'app-top-post',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ss:SwitchSettingsService) { }
 
   ngOnInit(): void {
+  }
+
+  showGeneral():void{
+    this.ss.toggleShowGeneral();
+    this.ss.toggleShowTopPost();
+  }
+
+  showAboutMe():void{
+    this.ss.toggleShowAboutMe();
+    this.ss.toggleShowTopPost();
+  }
+
+  showSocialLinks():void{
+    this.ss.toggleShowSocialLinks();
+    this.ss.toggleShowTopPost();
   }
 
 }

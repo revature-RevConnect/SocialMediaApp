@@ -1,4 +1,4 @@
-<br>
+<div class="aboutMe">
 <h5>Current About Me: {{userSocial.aboutMe}}</h5>
 <form #aboutMeForm="ngForm" (ngSubmit)="submitAboutMe(); aboutMeForm.reset()">
     <div><br>
@@ -7,3 +7,4 @@
         <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!aboutMe"/></td>
     </div>
 </form>
+</div>

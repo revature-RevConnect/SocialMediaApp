@@ -1,7 +1,19 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
-        <div class="panel">
+<app-add-post
+*ngIf="auth.user$ | async as user"
+[authID]="user.sub"
+(onSubmitPost)="addNewPost($event)"
+></app-add-post>
+
+<app-postfeed 
+*ngIf="auth.user$ | async as user"
+[authID]="user.sub"
+[posts]="posts"
+></app-postfeed>
+
+        <!--<div class="panel">
             <div class="cover-photo">
               <div class="fb-timeline-img">
                   <img src="https://th.bing.com/th/id/R.67212adcfd1504e9f455ae9b27dc9999?rik=quqrIn5M1EADUg&riu=http%3a%2f%2foptimizedude.com%2fwp-content%2fuploads%2f2015%2f02%2fCool-Twitter-Headers-7.jpg&ehk=Cizn2JyT86vo6WgHS%2bfF1V%2fRSJH6CugqVkPIdOVc85M%3d&risl=&pid=ImgRaw&r=0" alt="">
@@ -31,9 +43,9 @@
                   <li><a href="#"><i class="fa fa-microphone"></i></a></li>
               </ul>
           </footer>
-        </div>
+        </div>-->
         
-        <div class="panel">
+       <!-- <div class="panel">
           <div class="panel-body">
               <div class="fb-user-thumb">
                   <img src="https://th.bing.com/th/id/R.0d4de4a899b0a4a4a65ada092dcc1d48?rik=vNSwaHQYtYXang&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon%2fcool-avatar-icons-61.png&ehk=1ZeRd%2fbG2mzIwVIaqz8NBaJDmHyUIjY30K9HDrhRsAA%3d&risl=&pid=ImgRaw&r=0" alt="">
@@ -118,8 +130,9 @@
                   <div class="clearfix"></div>
               </div>
           </div>
-        </div>
-  </div>
+        </div>-->
+     </div>
 </div>
+
 
 

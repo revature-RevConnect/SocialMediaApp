@@ -1,0 +1,26 @@
+
+<div *ngIf="userSocial!=undefined">
+   <td>
+    <img [src]="userSocial.profilePicture" alt="" style="width:50px; height:50px;">
+</td>
+    <td>
+        <form  #commentForm="ngForm" class="cmt-form" (ngSubmit)="onSubmit(); commentForm.reset()">     
+        <td>
+            <textarea class="form-control" name="body" required [(ngModel)]="body" id="body" placeholder="Write a comment..."></textarea>
+        </td>
+        <td>       
+            <input type="submit" value="Comment" [disabled]="!body"/>
+        </td>
+       
+    </form>
+</td>
+</div>
+
+   <!-- <li>
+        <a href="#" class="cmt-thumb">
+            <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+        </a>
+        <div class="cmt-form">
+            <textarea class="form-control" placeholder="Write a comment..." name=""></textarea>
+        </div>
+    </li>-->

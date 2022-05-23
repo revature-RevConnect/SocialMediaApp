@@ -13,8 +13,8 @@ const httpOptions ={
   }),
 };
 
-const url='https://revconnect.azurewebsites.net/'
-
+//const url='https://revconnect.azurewebsites.net/'
+const url='https://testrevconnect.azurewebsites.net/'
 
 @Injectable({
   providedIn: 'root'

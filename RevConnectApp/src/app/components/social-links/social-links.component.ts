@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchSettingsService } from 'src/app/services/switch-settings.service';
 
 @Component({
   selector: 'app-social-links',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialLinksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ss:SwitchSettingsService) { }
 
   ngOnInit(): void {
+  }
+
+  showGeneral():void{
+    this.ss.toggleShowGeneral();
+    this.ss.toggleShowSocialLinks();
+  }
+
+  showAboutMe():void{
+    this.ss.toggleShowAboutMe();
+    this.ss.toggleShowSocialLinks();
+  }
+
+  showTopPost():void{
+    this.ss.toggleShowTopPost();
+    this.ss.toggleShowSocialLinks();
   }
 
 }
