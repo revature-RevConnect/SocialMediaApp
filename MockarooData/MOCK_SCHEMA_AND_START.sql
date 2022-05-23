@@ -9,9 +9,9 @@ base for a database first approach.
 CREATE SCHEMA RevConnect
 GO
 
---Tables creation below - for the purposes of setting mock data, "IDENTITY (1,1)" is left out.
+--Tables creation below
 CREATE TABLE RevConnect.Users (
-	userID INT NOT NULL PRIMARY KEY,
+	userID INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
 	authID NVARCHAR(24) NOT NULL,
 	name NVARCHAR(50),
 	email NVARCHAR(50),
@@ -26,23 +26,21 @@ CREATE TABLE RevConnect.Users (
 );
 
 CREATE TABLE RevConnect.Posts (
-	postID INT NOT NULL PRIMARY KEY,
+	postID INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
 	title TEXT,
 	body TEXT,
-	authID NVARCHAR(24),
-	postComments NVARCHAR(10),
-	postLikes NVARCHAR(50)
+	authID NVARCHAR(24)
 );
 
 CREATE TABLE RevConnect.Comments (
-	commentID INT NOT NULL PRIMARY KEY,
+	commentID INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
 	body TEXT,
 	authID NVARCHAR(24),
-	commentLikes NVARCHAR(50)
+	postID INT NOT NULL FOREIGN KEY REFERENCES 
 );
 
 CREATE TABLE RevConnect.Likes (
-	likeID INT NOT NULL PRIMARY KEY,
+	likeID INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
 	authID NVARCHAR(24),
 	postID INT,
 	commentID INT
