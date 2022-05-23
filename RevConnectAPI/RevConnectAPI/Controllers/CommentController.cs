@@ -44,5 +44,14 @@ namespace RevConnectAPI.Controllers
             return comments.ToList();
         }
 
+        [HttpGet("all/{postID}")]
+        public async Task<ActionResult<List<Comment>>> GetAllByID(int postID)
+        {
+            var comments = await _rc.Comments
+                .Where(b => b.postID == postID).ToListAsync();
+
+            return comments.ToList();
+        }
+
     }
 }

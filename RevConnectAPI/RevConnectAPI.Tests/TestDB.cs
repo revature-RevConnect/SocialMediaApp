@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RevConnectAPI.Data.DataContext;
-using RevConnectAPI.Database;
 
 namespace RevConnectAPI.Tests
 {
