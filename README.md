@@ -3,7 +3,7 @@
 
 ## Project Description
 
-Users can create an account with a user profile and can view, like, comment and share posts with other users of the site. Our application also implements an instant messaging feature allowing users to start a live chat with another user of their choosing.
+RevConnect is a single page web application with an Angular web application that communicates with a restful ASP.NET API with EF. Users can create an account with a user profile and can view, like, comment and share posts with other users of the site. Our application also implements an instant messaging feature allowing users to start a live chat with another user of their choosing.
 
 ## Technologies Used
 
