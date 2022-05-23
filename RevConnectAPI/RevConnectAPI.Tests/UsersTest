@@ -1,0 +1,307 @@
+using RevConnectAPI.Controllers;
+using RevConnectAPI.Database.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace RevConnectAPI.Tests
+{
+    public class UserTest
+    {
+
+        [Fact]
+        public async Task UserController_GetUsers_GetAllUsers()
+
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                firstname = "Alex",
+                lastName = "Bob",
+                userName= "05/12/2022",
+                passWord = ""//how to pass image to test and comments and others
+                aboutMe = " ",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "test user likes",
+
+            });
+            context.Users.Add(new User
+            {
+                userID = 2,
+                firstName = "Bruk",
+                lastName = "Gella",
+                userName= "05/12/2022",
+                passWord = "Rev@123",
+                aboutMe = "Test about me",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "Test user likes",
+            });
+            context.SaveChanges();
+
+            //Act
+            UserController testController = new UserController(context);
+            var actionResult = await testController.GetUsers();//post
+
+            //Assert
+            List<User> users = actionResult.Value;
+
+            Assert.Equal(2, user.Count);
+            var firstUser = users[0];
+            var secondUser = users[1];
+
+            Assert.Equal(1, firstUser.userID);
+            Assert.Equal("Tesing user first name", firstUser.firstName);
+            Assert.Equal("Testing user last name", firstUser.lastName);
+            Assert.Equal("Testing user's user name", firstUser.userName);
+            Assert.Equal("Testing password", firstUser.passWord);
+            Assert.Equal("Testing about me", firstUser.aboutMe);
+            Assert.Equal("Testing profile picture", firstUser.profilePicture);
+            Assert.Equal("Testing user comments", firstUser.usersComments);
+            Assert.Equal("Testing user post", firstUser.userPost);
+            Assert.Equal("Testing user likes", firstUser.userLikes);
+
+            Assert.Equal(2, secondUser.userID);
+            Assert.Equal("Tesing user first name", secondUser.firstName);
+            Assert.Equal("Testing user last name", secondUser.lastName);
+            Assert.Equal("Testing user's user name", secondUser.userName);
+            Assert.Equal("Testing password", secondUser.passWord);
+            Assert.Equal("Testing about me", secondUser.aboutMe);
+            Assert.Equal("Testing profile picture", secondUser.profilePicture);
+            Assert.Equal("Testing user comments", secondUser.usersComments);
+            Assert.Equal("Testing user post", secondUser.userPost);
+            Assert.Equal("Testing user likes", secondUser.userLikes);
+
+
+        }
+
+        [Fact]
+        public async Task UserController_AddUser_GetAllUsers()
+
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                firstname = "Alex",
+                lastName = "Bob",
+                userName= "05/12/2022",
+                passWord = ""//how to pass image to test and comments and others
+                aboutMe = " ",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "test user likes",
+
+            });
+            context.Users.Add(new User
+            {
+                userID = 2,
+                firstName = "Bruk",
+                lastName = "Gella",
+                userName= "05/12/2022",
+                passWord = "Rev@123",
+                aboutMe = "Test about me",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "Test user likes",
+            });
+            context.SaveChanges();
+
+            //Act
+            UserController testController = new UserController(context);
+            var actionResult = await testController.AddUsers();//post
+
+            //Assert
+            List<User> users = actionResult.Value;
+
+            Assert.Equal(2, user.Count);
+            var firstUser = users[0];
+            var secondUser = users[1];
+
+            Assert.Equal(1, firstUser.userID);
+            Assert.Equal("Tesing user first name", firstUser.firstName);
+            Assert.Equal("Testing user last name", firstUser.lastName);
+            Assert.Equal("Testing user's user name", firstUser.userName);
+            Assert.Equal("Testing password", firstUser.passWord);
+            Assert.Equal("Testing about me", firstUser.aboutMe);
+            Assert.Equal("Testing profile picture", firstUser.profilePicture);
+            Assert.Equal("Testing user comments", firstUser.usersComments);
+            Assert.Equal("Testing user post", firstUser.userPost);
+            Assert.Equal("Testing user likes", firstUser.userLikes);
+
+            Assert.Equal(2, secondUser.userID);
+            Assert.Equal("Tesing user first name", secondUser.firstName);
+            Assert.Equal("Testing user last name", secondUser.lastName);
+            Assert.Equal("Testing user's user name", secondUser.userName);
+            Assert.Equal("Testing password", secondUser.passWord);
+            Assert.Equal("Testing about me", secondUser.aboutMe);
+            Assert.Equal("Testing profile picture", secondUser.profilePicture);
+            Assert.Equal("Testing user comments", secondUser.usersComments);
+            Assert.Equal("Testing user post", secondUser.userPost);
+            Assert.Equal("Testing user likes", secondUser.userLikes);
+
+
+        }
+             [Fact]
+        public async Task UserController_DeletUsers_GetAllUsers()
+
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                firstname = "Alex",
+                lastName = "Bob",
+                userName= "05/12/2022",
+                passWord = ""//how to pass image to test and comments and others
+                aboutMe = " ",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "test user likes",
+
+            });
+            context.Users.Add(new User
+            {
+                userID = 2,
+                firstName = "Bruk",
+                lastName = "Gella",
+                userName= "05/12/2022",
+                passWord = "Rev@123",
+                aboutMe = "Test about me",
+                profilePicture = "",//PNg
+                usersComments = "Test user comments",
+                userPosts = "Test user posts",
+                userLikes = "Test user likes",
+            });
+            context.SaveChanges();
+
+            //Act
+            UserController testController = new UserController(context);
+            var actionResult = await testController.DeletUsers();//post
+
+            //Assert
+            List<User> users = actionResult.Value;
+
+            Assert.Equal(2, user.Count);
+            var firstUser = users[0];
+            var secondUser = users[1];
+
+            Assert.Equal(1, firstUser.userID);
+            Assert.Equal("Tesing user first name", firstUser.firstName);
+            Assert.Equal("Testing user last name", firstUser.lastName);
+            Assert.Equal("Testing user's user name", firstUser.userName);
+            Assert.Equal("Testing password", firstUser.passWord);
+            Assert.Equal("Testing about me", firstUser.aboutMe);
+            Assert.Equal("Testing profile picture", firstUser.profilePicture);
+            Assert.Equal("Testing user comments", firstUser.usersComments);
+            Assert.Equal("Testing user post", firstUser.userPost);
+            Assert.Equal("Testing user likes", firstUser.userLikes);
+
+            Assert.Equal(2, secondUser.userID);
+            Assert.Equal("Tesing user first name", secondUser.firstName);
+            Assert.Equal("Testing user last name", secondUser.lastName);
+            Assert.Equal("Testing user's user name", secondUser.userName);
+            Assert.Equal("Testing password", secondUser.passWord);
+            Assert.Equal("Testing about me", secondUser.aboutMe);
+            Assert.Equal("Testing profile picture", secondUser.profilePicture);
+            Assert.Equal("Testing user comments", secondUser.usersComments);
+            Assert.Equal("Testing user post", secondUser.userPost);
+            Assert.Equal("Testing user likes", secondUser.userLikes);
+
+        }
+        //      [Fact]
+        // public async Task UserController_PutUsers_GetAllUsers()
+
+        // {
+        //     //Arrange
+        //     var testing = new TestDB();
+        //     var context = testing.CreateContextForInMemory();
+        //     context.Users.Add(new User
+        //     {
+        //         userID = 1,
+        //         firstname = "Alex",
+        //         lastName = "Bob",
+        //         userName= "05/12/2022",
+        //         passWord = ""//how to pass image to test and comments and others
+        //         aboutMe = " ",
+        //         profilePicture = "",//PNg
+        //         usersComments = "Test user comments",
+        //         userPosts = "Test user posts",
+        //         userLikes = "test user likes",
+
+        //     });
+        //     context.Users.Add(new User
+        //     {
+        //         userID = 2,
+        //         firstName = "Bruk",
+        //         lastName = "Gella",
+        //         userName= "05/12/2022",
+        //         passWord = "Rev@123",
+        //         aboutMe = "Test about me",
+        //         profilePicture = "",//PNg
+        //         usersComments = "Test user comments",
+        //         userPosts = "Test user posts",
+        //         userLikes = "Test user likes",
+        //     });
+        //     context.SaveChanges();
+
+        //     //Act
+        //     UserController testController = new UserController(context);
+        //     var actionResult = await testController.PutUsers();//post
+
+        //     //Assert
+        //     List<User> users = actionResult.Value;
+
+        //     Assert.Equal(2, user.Count);
+        //     var firstUser = users[0];
+        //     var secondUser = users[1];
+
+        //     Assert.Equal(1, firstUser.userID);
+        //     Assert.Equal("Tesing user first name", firstUser.firstName);
+        //     Assert.Equal("Testing user last name", firstUser.lastName);
+        //     Assert.Equal("Testing user's user name", firstUser.userName);
+        //     Assert.Equal("Testing password", firstUser.passWord);
+        //     Assert.Equal("Testing about me", firstUser.aboutMe);
+        //     Assert.Equal("Testing profile picture", firstUser.profilePicture);
+        //     Assert.Equal("Testing user comments", firstUser.usersComments);
+        //     Assert.Equal("Testing user post", firstUser.userPost);
+        //     Assert.Equal("Testing user likes", firstUser.userLikes);
+
+        //     Assert.Equal(2, secondUser.userID);
+        //     Assert.Equal("Tesing user first name", secondUser.firstName);
+        //     Assert.Equal("Testing user last name", secondUser.lastName);
+        //     Assert.Equal("Testing user's user name", secondUser.userName);
+        //     Assert.Equal("Testing password", secondUser.passWord);
+        //     Assert.Equal("Testing about me", secondUser.aboutMe);
+        //     Assert.Equal("Testing profile picture", secondUser.profilePicture);
+        //     Assert.Equal("Testing user comments", secondUser.usersComments);
+        //     Assert.Equal("Testing user post", secondUser.userPost);
+        //     Assert.Equal("Testing user likes", secondUser.userLikes);
+
+
+        // }
+
+       
+        
+
+     
+
+
+    }
+}
