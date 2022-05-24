@@ -18,20 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          
       - name: move Directory
         run: |
          ls .
          cd .\RevConnectApp
          ls .
 
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-
       - name: npm install, build, and test
         run: |
+          ls .
           npm install
           npm run build --if-present
           npm run test --if-present
