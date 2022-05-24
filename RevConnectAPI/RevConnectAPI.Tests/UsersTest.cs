@@ -20,10 +20,10 @@ namespace RevConnectAPI.Tests
             //Arrange
             var testing = new TestDB();
             var context = testing.CreateContextForInMemory();
-            context.Users.Add(new User
+            var TestUser = new User 
             {
                 userID = 1,
-                authID = "",
+                authID = "a",
                 name = "Testing",
                 email = "Teating@test.com",
                 profilePicture =  " ",
@@ -33,16 +33,19 @@ namespace RevConnectAPI.Tests
                 linkedin = "linkedin",
                 twitter = "twitter",
                 github = "github",
-            });
-            context.SaveChanges();
+            };
+            
+            
+
             //Act
             UsersController testController = new UsersController(_logger,context);
-            var actionResult = await testController.Post();//post
+            await testController.Post(TestUser);//post
+            var result = await testController.Login("a");
             //Assert
-            List<User> users = actionResult.Value;
-            var firstUser = users[0];
+            User users = result.Value;
+            var firstUser = users;
             Assert.Equal(1, firstUser.userID);
-            Assert.Equal("", firstUser.authID);
+            Assert.Equal("a", firstUser.authID);
             Assert.Equal("Testing", firstUser.name);
             Assert.Equal(" ", firstUser.profilePicture);
             Assert.Equal("555-555-5555", firstUser.phone);
@@ -55,7 +58,6 @@ namespace RevConnectAPI.Tests
 
         [Fact]
         public async Task UserController_UserLoginTest()
-
         {
             //Arrange
             var testing = new TestDB();
@@ -63,7 +65,7 @@ namespace RevConnectAPI.Tests
             context.Users.Add(new User
             {
                 userID = 1,
-                authID = "",
+                authID = "a",
                 name = "Testing",
                 email = "Teating@test.com",
                 profilePicture = " ",
@@ -79,16 +81,14 @@ namespace RevConnectAPI.Tests
 
             //Act
             UsersController testController = new UsersController(_logger,context);
-            var actionResult = await testController.Login();
+            var actionResult = await testController.Login("a");
 
             //Assert
-            List<User> users = actionResult.Value;
-
-            Assert.Equal(1, users.Count);
-            var firstUser = users[0];
+            User users = actionResult.Value;
+            var firstUser = users;
 
             Assert.Equal(1, firstUser.userID);
-            Assert.Equal("", firstUser.authID);
+            Assert.Equal("a", firstUser.authID);
             Assert.Equal("Testing", firstUser.name);
             Assert.Equal(" ", firstUser.profilePicture);
             Assert.Equal("555-555-5555", firstUser.phone);
@@ -98,5 +98,41 @@ namespace RevConnectAPI.Tests
             Assert.Equal("github", firstUser.github);
         }
 
+        [Fact]
+        public async Task UserController_ChangeUserNameTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", name = "ChangedTest"};
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeUserName(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("ChangedTest", firstUser.name);
+            Assert.Equal("Testing@test.com", firstUser.email);
+            
+        }
     }
 }
