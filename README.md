@@ -113,6 +113,7 @@ Auth0
 - Tahereh Rastegarzare
 - Tuan Anh Nguyen
 - Tryggve Rogness
+- Phirith Pheak
 
 Sonar Cloud 
 - Austin Hickman
@@ -123,4 +124,7 @@ Mockaroo
 
 Static Web Hosting
 - Dan Gagne
+
+Frontend Design (Home, User Profile, Settings)
+- Phirith Pheak
 
