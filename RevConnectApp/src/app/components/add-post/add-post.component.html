@@ -21,7 +21,7 @@
         
         <div class="panel profile-info">
           <form #postForm="ngForm" class="addPost" (ngSubmit)="onSubmit(); postForm.reset()">
-              <textarea class="form-control input-lg p-text-area" rows="2" name="body" required [(ngModel)]="body" id="body" placeholder="Whats in your mind today?"></textarea>
+              <textarea class="form-control input-lg p-text-area" rows="2" name="body" required [(ngModel)]="body" id="body" placeholder="Whats on your mind?"></textarea>
           
           <footer class="panel-footer">
               <input type="submit" class="btn btn-info pull-right" value="Post" [disabled]="!body"/>
