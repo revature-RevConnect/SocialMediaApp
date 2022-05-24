@@ -64,8 +64,8 @@ namespace RevConnectAPI.Tests
         
 
         }
-        /*[Fact]
-        public async Task LikeController_AddLikes_GetAllLikes()
+        [Fact]
+        public async Task LikeController_AddLikes_AddOrRemoveLikeFromPost()
 
         {
             //Arrange
@@ -74,25 +74,27 @@ namespace RevConnectAPI.Tests
             context.Likes.Add(new Like
             {
                 likeID = 1,
-                authID = "",
+                authID = "a",
                 postID = 1,
-                commentID = 0,//null
+                commentID = null,
 
 
             });
-            context.Likes.Add(new Like
+
+            var testLike=new Like
             {
                 likeID = 2,
-                authID= "",
-                postID = 2,
-                commentID = 0,//null
-            });
+                authID = "b",
+                postID = 1,
+                commentID = null,
+            };
         
             context.SaveChanges();
 
             //Act
             LikesController testController = new LikesController(_logger,context);
-            var actionResult = await testController.LikePost(2);
+            await testController.LikePost(testLike);
+            var actionResult = await testController.GetPostLikesCount(1);//post
 
             //Assert
             List<Like> likes = actionResult.Value;
@@ -102,17 +104,17 @@ namespace RevConnectAPI.Tests
             var secondLike = likes[1];
 
             Assert.Equal(1, firstLike.likeID);
-            Assert.Equal("", firstLike.authID);
+            Assert.Equal("a", firstLike.authID);
             Assert.Equal(1, firstLike.postID);
-            Assert.Equal(1, firstLike.commentID);
+  
 
             Assert.Equal(2, secondLike.likeID);
-            Assert.Equal("", secondLike.authID);
-            Assert.Equal(2, secondLike.postID);
-            Assert.Equal(2, secondLike.commentID);
+            Assert.Equal("b", secondLike.authID);
+            Assert.Equal(1, secondLike.postID);
+
         
 
         }
-        */
+        
     }
 }
