@@ -19,7 +19,10 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: move Directory
-        run: ls . |  cd .\RevConnectApp | ls .
+        run: |
+         ls .
+         cd .\RevConnectApp
+         ls .
 
 
       - name: Set up Node.js version
