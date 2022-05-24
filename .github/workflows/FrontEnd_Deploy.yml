@@ -55,4 +55,4 @@ jobs:
           app-name: 'RevConnectApp'
           slot-name: 'production'
           publish-profile: ${{ secrets.DAN_AZURE_APP_PROFILE }}
-          package: ./RevConnectApp
+          package: ./RevConnectApp/dist
