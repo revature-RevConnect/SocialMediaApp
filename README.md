@@ -25,8 +25,10 @@ RevConnect is a single page web application with an Angular web application that
 
 * Live messaging between 2 users using SignalR 
 * Dark mode
+
 To-do list:
-* Wow improvement to be done 1
+* Adding additional unit tests
+* Fixing minor bugs with dark mode
 
 ## Getting Started
 
