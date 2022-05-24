@@ -102,7 +102,7 @@ namespace RevConnectAPI.Controllers
             return new ContentResult() { StatusCode = 200 };
         }
 
-                [HttpPut("github")]
+        [HttpPut("github")]
         public async Task<ActionResult<User>> ChangeGithub(User user)
         {
             var newUser = await _rc.Users
