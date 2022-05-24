@@ -1,0 +1,38 @@
+<div *ngIf="userSocial!=undefined">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="panel">
+            <div class="cover-photo">
+              <div class="fb-timeline-img">
+                  <img src="https://th.bing.com/th/id/R.67212adcfd1504e9f455ae9b27dc9999?rik=quqrIn5M1EADUg&riu=http%3a%2f%2foptimizedude.com%2fwp-content%2fuploads%2f2015%2f02%2fCool-Twitter-Headers-7.jpg&ehk=Cizn2JyT86vo6WgHS%2bfF1V%2fRSJH6CugqVkPIdOVc85M%3d&risl=&pid=ImgRaw&r=0" alt="">
+              </div>
+              <div class="fb-name">
+                  <h2><a href="#">{{userSocial.name}}</a></h2>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="profile-thumb">
+                  <img [src]="userSocial.profilePicture" alt="user photo">
+              </div>
+              <a href="#" class="fb-user-mail">{{userSocial.email}}</a>
+            </div>
+        </div>
+        
+        <div class="panel profile-info">
+          <form #postForm="ngForm" class="addPost" (ngSubmit)="onSubmit(); postForm.reset()">
+              <textarea class="form-control input-lg p-text-area" rows="2" name="body" required [(ngModel)]="body" id="body" placeholder="Whats on your mind?"></textarea>
+          
+          <footer class="panel-footer">
+              <input type="submit" class="btn btn-info pull-right" value="Post" [disabled]="!body"/>
+            
+              <ul class="nav nav-pills">
+                  <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+                  <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                  <li><a href="#"><i class=" fa fa-film"></i></a></li>
+                  <li><a href="#"><i class="fa fa-microphone"></i></a></li>
+              </ul>
+          </footer>
+        </form>
+        </div>
+    </div>

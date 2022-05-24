@@ -1,0 +1,16 @@
+
+<div *ngIf="userSocial!=undefined">
+   <td>
+    <img [src]="userSocial.profilePicture" class="img" alt="" style="width:50px; height:50px;">
+</td>
+    <td>
+        <form  #commentForm="ngForm" class="cmt-form" (ngSubmit)="onSubmit(); commentForm.reset()">     
+        <td>
+            <textarea class="form-control" name="body" required [(ngModel)]="body" id="body" placeholder="Write a comment..."></textarea>
+        </td>
+        <td>       
+            <input class="btn" type="submit" value="Comment" [disabled]="!body"/>
+        </td>       
+    </form>
+</td>
+</div>

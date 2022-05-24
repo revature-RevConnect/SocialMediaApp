@@ -1,0 +1,35 @@
+<div class="text-right mt-3"></div>
+<img [src]="userSocial.profilePicture" width="150" height="150">
+<h5>Current Profile Picture</h5>
+<div class="media-body ml-4">
+    <td><label>
+    <input  type="file" class="account-settings-fileinput" (change)="onFileSelected($event)" >
+    
+    </label><td><button class="btn" (click)="onUpload()">Submit</button></td><br>
+    
+</div>
+
+<h5>Current Username: {{userSocial.name}}</h5>
+<form #usernameForm="ngForm" (ngSubmit)="submitUsername(); usernameForm.reset()">
+    <div>
+        <label for="ID">Change Username</label>
+        <td><input type="textbox" name="name" required [(ngModel)]="name" id="name" placeholder="Enter New Username"/></td>
+        <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!name"/></td>
+    </div><br>
+
+<h5>Current Phone: {{userSocial.phone}}</h5>
+<form #phoneForm="ngForm" (ngSubmit)="submitPhone(); phoneForm.reset()">
+    <div>
+        <label for="ID">Change Phone</label>
+        <td><input type="textbox" name="phone" required [(ngModel)]="phone" id="phone" placeholder="Enter New Phone"/></td>
+        <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!phone"/></td>
+    </div><br>
+
+<h5>Current Address: {{userSocial.address}}</h5>
+<form #addressForm="ngForm" (ngSubmit)="submitAddress(); addressForm.reset()">
+    <div>
+        <label for="ID">Change Address</label>
+        <td><input type="textbox" name="address" required [(ngModel)]="address" id="address" placeholder="Enter New Address"/></td>
+        <td> <input type="submit" value="Submit" class="btn"[ngStyle]="{'background-color':'#F2692'}" [disabled]="!address"/></td>
+    </div><br>
+

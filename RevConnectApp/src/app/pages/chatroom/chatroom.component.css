@@ -1,0 +1,101 @@
+
+.messages
+{
+    margin: 40px;
+    margin-right: 55%;
+    margin-left: 20px;
+    align-self: right;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: left;
+    width: 75%;
+    height:400px;
+    overflow:auto;
+    vertical-align: top;
+    display:flex;
+    flex-direction:column-reverse;
+
+}
+.user-date-label
+{
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: fit-content;
+}
+.chat-input
+{
+    margin-left: 30px;
+    vertical-align: bottom;
+    height:60px;
+    width: 40%;
+    padding-left:10px;
+}
+.user-list
+{
+    width:20%;
+    margin-right: 20px;
+    float:right;
+    vertical-align: top;
+}
+.messageSS
+{
+    background:rgb(242, 105, 38);
+    padding: 3px;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color:rgb(72,76,86);
+    font-size: 20px;
+    color: white;
+    width: fit-content;
+}
+.messageRR
+{
+    background:rgb(115,165,194);
+    padding: 3px;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color:rgb(72,76,86);
+    font-size: 20px;
+    color: white;
+    width: fit-content;
+}
+
+.container-p-y {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 700px;
+}
+
+
+.container-p-y3 {
+    border-style: inset;
+    border-width: 5px;
+    border-color: #F26925;
+    height: 825px;
+}
+    
+
+.btn {
+    transition-duration: 0.4s;
+   
+    font-weight: bold;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
+}
+
+.mb-4 {
+    text-align: center;
+}
+    
+
+.btn input{
+    border:solid;
+}
+

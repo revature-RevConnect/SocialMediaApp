@@ -1,0 +1,11 @@
+.btn {
+    transition-duration: 0.4s;
+    border: 2px solid #F26925;
+  }
+  
+.btn:hover {
+    background-color: #F26925; 
+    border-color: #F26925;
+    color: white;
+
+}

@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body 
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    height:40px;
+    width:70px;
+    border-radius: 20px;
+    outline: none;
+    cursor:pointer;
+    background-color: black;
+    box-shadow: 0 2px 5px 1px grey;
+    float:right;
+    right: 0px;
+    position:absolute;
+}
+
+input[type="checkbox"]:before{
+    content:"";
+    position: absolute;
+    height: 30px;
+    width:30px;
+    background-color: white;
+    top:5px;
+    float:right;
+    right: 34px;
+    border-radius:50%;
+}
+
+input[type="checkbox"]:checked:before{
+    transform: translate(100%);
+    background-color: white;
+    top:5px;
+    float:right;
+    right:34px;
+}
+
+.active {
+    background-color: #212121 !important;
+    color: #FFFFFF !important;
+}

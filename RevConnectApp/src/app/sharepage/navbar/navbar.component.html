@@ -1,0 +1,27 @@
+<div class="header">
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="" routerLinkActive="active link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="chatroom" routerLinkActive="active link">Chat Room</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="user-profile" routerLinkActive="active link">User Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="settings" routerLinkActive="active link">Settings</a>
+    </li>
+    <!-- hides the login button when the user is logged in and authenticated -->
+    <app-login-button *ngIf="(auth.isAuthenticated$ | async ) === false" ></app-login-button>
+    <!-- logout button when the user is logged in and authenticated -->
+    <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
+
+    <li><input type = "checkbox" id = "toggle" (click) = "changeMode()"></li>
+  </ul>
+  
+  <nav class="nav justify-content-left">
+      <a class="navbar-brand" routerLink="">
+      <img src="./../../assets/img/revature-logo.png" alt="Revature Logo" width="200" height="120">
+      </a>
+ 

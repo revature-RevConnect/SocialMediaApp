@@ -1,0 +1,58 @@
+<div class="container light-style flex-grow-1 container-p-y3">
+<h4 class="font-weight-bold py-3 mb-4">
+    <strong>Welcome to Revature Connect Chat Room!</strong>
+</h4>
+<div *ngIf="auth.user$ | async as loggedInUser"class="container light-style flex-grow-1 container-p-y" >
+    <div class="user-list">
+        <ol *ngIf="onlineUsers">
+            <h4>Online Users</h4>
+            <ul>
+                <button type="submit" class="btn"
+                (click)="onSelectReceiver(defaultReceiver)"> 
+                <span>Everyone</span>
+                </button>
+            </ul>
+            <ul *ngFor="let user of onlineUsers">
+                <button type="submit" class="btn"
+                (click)="onSelectReceiver(user)"> 
+                    <span>{{user.name}}</span>
+                </button>
+            </ul>
+           <br>
+            <h6>Chatting with: {{userReceiver.name}}</h6>
+        </ol>
+    </div>
+
+    <div class="messages" align="left">
+        <div>
+            <div *ngFor="let chat of chatContainer">
+
+                <div *ngIf="chat.sender !== loggedInUser.nickname">
+                    <div *ngIf="chat.receiver === loggedInUser.nickname || chat.receiver === 'Everyone' ||chat.sender === loggedInUser.nickname" class="receiver-message-body">
+                        <div class="message-text">
+                            <div class="user-date-label"><span> {{chat.sender}}</span> said to <span> {{chat.receiver}}</span></div>
+                            <div class="messageRR" bgcolor="yellow">{{chat.message}}</div><br />
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="chat.sender === loggedInUser.nickname">
+                    <div *ngIf="chat.receiver === loggedInUser.nickname || chat.receiver === 'Everyone' ||chat.sender === loggedInUser.nickname" class="receiver-message-body">
+                        <div class="message-text">
+                            <div class="user-date-label"><span> {{chat.sender}}</span> said to <span> {{chat.receiver}}</span></div>
+                            <div class="messageSS" bgcolor="yellow">{{chat.message}}</div><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form #messageForm="ngForm" class="input" (ngSubmit)="onSendMessage();messageForm.reset()">
+        <div> 
+            <label></label>
+            <textarea placeholder="Enter a message..." class="chat-input" name="message" [(ngModel)]="message"></textarea>
+        </div>
+        <div class="btn">
+            <input type="submit" value="Send" class="btn" [disabled]="!message">
+        </div>
+    </form>
+
