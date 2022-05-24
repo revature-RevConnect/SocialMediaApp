@@ -55,7 +55,8 @@ namespace RevConnectAPI.Tests
             Assert.Equal("github", firstUser.github);
             
         }
-
+        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
         [Fact]
         public async Task UserController_UserLoginTest()
         {
@@ -97,7 +98,8 @@ namespace RevConnectAPI.Tests
             Assert.Equal("twitter", firstUser.twitter);
             Assert.Equal("github", firstUser.github);
         }
-
+        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
         [Fact]
         public async Task UserController_ChangeUserNameTest()
         {
@@ -120,7 +122,7 @@ namespace RevConnectAPI.Tests
             });
 
             context.SaveChanges();
-            var newUser = new User { authID = "a", name = "ChangedTest"};
+            var newUser = new User { authID = "a", name = "ChangedTest" };
 
             //Act
             UsersController testController = new UsersController(_logger, context);
@@ -132,7 +134,304 @@ namespace RevConnectAPI.Tests
             Assert.Equal("a", firstUser.authID);
             Assert.Equal("ChangedTest", firstUser.name);
             Assert.Equal("Testing@test.com", firstUser.email);
-            
+
+        }
+        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangePictureTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", profilePicture = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangePicture(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("ChangedTest", firstUser.profilePicture);
+            Assert.Equal("Testing@test.com", firstUser.email);
+        }
+        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeAboutTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", aboutMe = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeAboutMe(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("ChangedTest", firstUser.aboutMe);
+            Assert.Equal("Testing@test.com", firstUser.email);
+        }
+        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangePhoneTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", phone = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangePhoneNumber(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("ChangedTest", firstUser.phone);
+            Assert.Equal("Testing@test.com", firstUser.email);
+        }
+        /////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeEmailTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", email = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeEmail(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("Testing", firstUser.name);
+            Assert.Equal("ChangedTest", firstUser.email);
+        }//This test is FAILING
+        /////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeAddressTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", address = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeAddress(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("Testing", firstUser.name);
+            Assert.Equal("ChangedTest", firstUser.address);
+        }
+        /////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeGithubTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", github = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeGithub(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("Testing", firstUser.name);
+            Assert.Equal("ChangedTest", firstUser.github);
+        }
+
+        /////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeTwitterTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", twitter = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeTwitter(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("Testing", firstUser.name);
+            Assert.Equal("ChangedTest", firstUser.twitter);
+        }
+        /////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
+        [Fact]
+        public async Task UserController_ChangeLinkedInTest()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            context.Users.Add(new User
+            {
+                userID = 1,
+                authID = "a",
+                name = "Testing",
+                email = "Testing@test.com",
+                profilePicture = " ",
+                aboutMe = " ",
+                phone = "555-555-5555",
+                address = "555 testing st",
+                linkedin = "linkedin",
+                twitter = "twitter",
+                github = "github",
+            });
+
+            context.SaveChanges();
+            var newUser = new User { authID = "a", linkedin = "ChangedTest" };
+
+            //Act
+            UsersController testController = new UsersController(_logger, context);
+            var actionResult = await testController.ChangeLinkedIn(newUser);
+            var getresult = await testController.Login("a");
+            //Assert
+            User users = getresult.Value;
+            var firstUser = users;
+            Assert.Equal("a", firstUser.authID);
+            Assert.Equal("Testing", firstUser.name);
+            Assert.Equal("ChangedTest", firstUser.linkedin);
         }
     }
 }
