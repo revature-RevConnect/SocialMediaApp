@@ -99,7 +99,8 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
       clientId: 'P4JlEHEDUAuT1qZ8EMlTMUckKT9pIKR5',
       audience: 'https://TestRevConnect/api',
       apiUri: "https://testrevconnect.azurewebsites.net",
-      appUri: "http://localhost:4200",
+      appUri: "https://revconnect5.azurewebsites.net",
+      //appUri: "http://localhost:4200",
       httpInterceptor: {
         allowedList: [
           {
