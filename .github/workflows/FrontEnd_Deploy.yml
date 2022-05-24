@@ -17,6 +17,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: move Directory
+        run: ls . |  cd .\RevConnectApp | ls .
+
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
