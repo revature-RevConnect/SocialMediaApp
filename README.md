@@ -29,6 +29,8 @@ To-do list:
 ## Getting Started
 
 - `git clone https://github.com/revature-RevConnect/SocialMediaApp.git`
+- `npm install -g @angular/cli`
+- `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
 - `dotnet tool list --global`
 - `dotnet tool list --global dotnet-ef`
 
