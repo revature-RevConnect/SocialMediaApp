@@ -45,7 +45,7 @@
     <form #messageForm="ngForm" class="input" (ngSubmit)="onSendMessage();messageForm.reset()">
         <div> 
             <label></label>
-            <textarea placeholder="Join the chat?." class="chat-input" name="message" [(ngModel)]="message"></textarea>
+            <textarea placeholder="Enter a message..." class="chat-input" name="message" [(ngModel)]="message"></textarea>
         </div>
         <div class="btn">
             <input type="submit" value="Send" class="btn" [disabled]="!message">
