@@ -3,7 +3,7 @@
 
 ## Project Description
 
-Users can create an account with a user profile and can view, like, comment and share posts with other users of the site. Our application also implements an instant messaging feature allowing users to start a live chat with another user of their choosing.
+RevConnect is a single page web application with an Angular web application that communicates with a restful ASP.NET API with EF. Users can create an account with a user profile and can view, like, comment and share posts with other users of the site. Our application also implements an instant messaging feature allowing users to start a live chat with another user of their choosing.
 
 ## Technologies Used
 
@@ -29,6 +29,8 @@ To-do list:
 ## Getting Started
 
 - `git clone https://github.com/revature-RevConnect/SocialMediaApp.git`
+- `npm install -g @angular/cli`
+- `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
 - `dotnet tool list --global`
 - `dotnet tool list --global dotnet-ef`
 
@@ -44,8 +46,13 @@ To-do list:
 
 
 ## Usage
+- Create an account 
+- View posts in Post Feed
+- Like a post
+- Create a comment for a post
+- Create a post 
+- Toggle dark mode
 
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
 
 ## Contributors
 
@@ -86,10 +93,14 @@ Docker
 
 Create a Profile
 - Aureliano Silva
+- Phirith Pheak
 
 Upload a Profile Picture
 - Christian Cubides
 - Dan Gagne
+
+Settings 
+- Phirith Pheak
 
 Unit Testing
 - Diego De Los Santos
@@ -98,6 +109,7 @@ Unit Testing
 
 Auth0
 - Andrew Krisnawan
+- Phirith Pheak
 - Tahereh Rastegarzare
 - Tuan Anh Nguyen
 - Tryggve Rogness

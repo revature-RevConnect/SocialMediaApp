@@ -29,6 +29,7 @@
     vertical-align: bottom;
     height:60px;
     width: 40%;
+    padding-left:10px;
 }
 .user-list
 {
@@ -68,8 +69,6 @@
 }
 
 
-
-
 .container-p-y3 {
     border-style: inset;
     border-width: 5px;
@@ -95,3 +94,8 @@
     text-align: center;
 }
     
+
+.btn input{
+    border:solid;
+}
+
