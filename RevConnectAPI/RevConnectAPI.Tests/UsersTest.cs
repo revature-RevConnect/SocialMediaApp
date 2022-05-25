@@ -209,6 +209,8 @@ namespace RevConnectAPI.Tests
             Assert.Equal("a", result.authID);
             Assert.Equal("ChangedTest", result.aboutMe);
             Assert.Equal("Testing@test.com", result.email);
+
+
         }
         //////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////
@@ -284,6 +286,7 @@ namespace RevConnectAPI.Tests
             Assert.Equal("Testing", firstUser.name);
             Assert.Equal("ChangedTest", firstUser.email);
         }
+
         /////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         [Fact]

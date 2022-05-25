@@ -94,6 +94,7 @@ namespace RevConnectAPI.Tests
             Assert.Equal("a", firstLike[0].authID);
             Assert.Equal(1, firstLike[0].postID);
             Assert.Equal(null, firstLike[0].commentID);
+
         }
         ///////////////////
         [Fact]
@@ -109,6 +110,7 @@ namespace RevConnectAPI.Tests
                 postID = null,
                 commentID = 1,
             };
+
 
             //Act
             LikesController testController = new LikesController(_logger, context);
