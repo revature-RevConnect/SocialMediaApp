@@ -27,7 +27,7 @@ namespace RevConnectAPI.Tests
                 authID = "",
                 postID = 1,
                 commentID = 1,//null
-               
+
 
             });
             context.Likes.Add(new Like
@@ -42,7 +42,7 @@ namespace RevConnectAPI.Tests
             context.SaveChanges();
 
             //Act
-            LikesController testController = new LikesController(_logger ,context);
+            LikesController testController = new LikesController(_logger, context);
             var actionResult = await testController.GetPostLikesCount(1);//post
 
             //Assert
@@ -53,7 +53,7 @@ namespace RevConnectAPI.Tests
             var secondLike = likes[1];
 
             Assert.Equal(1, firstLike.likeID);
-            Assert.Equal("", firstLike. authID );
+            Assert.Equal("", firstLike.authID);
             Assert.Equal(1, firstLike.postID);
             Assert.Equal(1, firstLike.commentID);
 
@@ -61,17 +61,18 @@ namespace RevConnectAPI.Tests
             Assert.Equal("", secondLike.authID);
             Assert.Equal(1, secondLike.postID);
             Assert.Equal(1, secondLike.commentID);
-        
+
 
         }
+        //////////////////////
         [Fact]
-        public async Task LikeController_AddLikes_AddOrRemoveLikeFromPost()
+        public async Task LikeController_PostLikes()
 
         {
             //Arrange
             var testing = new TestDB();
             var context = testing.CreateContextForInMemory();
-            context.Likes.Add(new Like
+            var TestLike = new Like
             {
                 likeID = 1,
                 authID = "a",
@@ -79,42 +80,46 @@ namespace RevConnectAPI.Tests
                 commentID = null,
 
 
-            });
-
-            var testLike=new Like
-            {
-                likeID = 2,
-                authID = "b",
-                postID = 1,
-                commentID = null,
             };
-        
-            context.SaveChanges();
 
             //Act
-            LikesController testController = new LikesController(_logger,context);
-            await testController.LikePost(testLike);
+            LikesController testController = new LikesController(_logger, context);
+            await testController.LikePost(TestLike);
             var actionResult = await testController.GetPostLikesCount(1);//post
 
             //Assert
             List<Like> likes = actionResult.Value;
+            var firstLike = likes;
+            Assert.Equal(1, firstLike[0].likeID);
+            Assert.Equal("a", firstLike[0].authID);
+            Assert.Equal(1, firstLike[0].postID);
+            Assert.Equal(null, firstLike[0].commentID);
+        }
+        ///////////////////
+        [Fact]
+        public async Task LikeController_PostCommentLike()
+        {
+            //Arrange
+            var testing = new TestDB();
+            var context = testing.CreateContextForInMemory();
+            var TestLike = new Like
+            {
+                likeID = 1,
+                authID = "a",
+                postID = null,
+                commentID = 1,
+            };
 
-            Assert.Equal(2, likes.Count);
-            var firstLike = likes[0];
-            var secondLike = likes[1];
-
+            //Act
+            LikesController testController = new LikesController(_logger, context);
+            var actionResult = await testController.LikeComment(TestLike);
+            //Assert
+            Like likes = actionResult.Value;
+            var firstLike = likes;
             Assert.Equal(1, firstLike.likeID);
             Assert.Equal("a", firstLike.authID);
-            Assert.Equal(1, firstLike.postID);
-  
+            Assert.Equal(1, firstLike.commentID);
+        }//This Test Keeps Failing
 
-            Assert.Equal(2, secondLike.likeID);
-            Assert.Equal("b", secondLike.authID);
-            Assert.Equal(1, secondLike.postID);
-
-        
-
-        }
-        
     }
 }
