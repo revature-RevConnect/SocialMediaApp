@@ -33,12 +33,10 @@ namespace RevConnectAPI.Tests
             //Act
             PostsController testController = new PostsController(_logger, context);
             await testController.Post(TestPost);//post
-            var result = await testController.Get(TestPost.authID);
+
+            var result = await testController.Get();
             //Assert
             List<Post> posts = result.Value;
-            var firstPost = posts;
-
-            
             Assert.Equal(1, posts[0].postID);
             Assert.Equal("TestTitle", posts[0].title);
             Assert.Equal("TestBody", posts[0].body);
@@ -53,22 +51,23 @@ namespace RevConnectAPI.Tests
             //Arrange
             var testing = new TestDB();
             var context = testing.CreateContextForInMemory();
-            var TestPost = new Post
+            context.Posts.Add(new Post
             {
                 postID = 1,
                 title = "TestTitle",
                 body = "TestBody",
-                authID = "a"
-            };
+                authID = "a",
+            });
+            context.SaveChanges();
+
 
 
 
             //Act
             PostsController testController = new PostsController(_logger, context);
-            var result = await testController.Get(TestPost.authID);
+            var result = await testController.Get();
             //Assert
-            List<Post> posts = result.Value;
-            var firstPost = posts;
+            var posts = result.Value;
 
 
             Assert.Equal(1, posts[0].postID);

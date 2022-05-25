@@ -13,20 +13,20 @@ namespace RevConnectAPI.Tests
     public class UsersTest
     {
 
-        private readonly ILogger<UsersController> _logger ;
+        private readonly ILogger<UsersController> _logger;
         [Fact]
         public async Task UsersController_UserPostTest()
         {
             //Arrange
             var testing = new TestDB();
             var context = testing.CreateContextForInMemory();
-            var TestUser = new User 
+            var TestUser = new User
             {
                 userID = 1,
                 authID = "a",
                 name = "Testing",
                 email = "Teating@test.com",
-                profilePicture =  " ",
+                profilePicture = " ",
                 aboutMe = " ",
                 phone = "555-555-5555",
                 address = "555 testing st",
@@ -34,11 +34,11 @@ namespace RevConnectAPI.Tests
                 twitter = "twitter",
                 github = "github",
             };
-            
-            
+
+
 
             //Act
-            UsersController testController = new UsersController(_logger,context);
+            UsersController testController = new UsersController(_logger, context);
             await testController.Post(TestUser);//post
             var result = await testController.Login("a");
             //Assert
@@ -53,7 +53,7 @@ namespace RevConnectAPI.Tests
             Assert.Equal("linkedin", firstUser.linkedin);
             Assert.Equal("twitter", firstUser.twitter);
             Assert.Equal("github", firstUser.github);
-            
+
         }
         //////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////
@@ -77,11 +77,11 @@ namespace RevConnectAPI.Tests
                 twitter = "twitter",
                 github = "github",
             });
-            
+
             context.SaveChanges();
 
             //Act
-            UsersController testController = new UsersController(_logger,context);
+            UsersController testController = new UsersController(_logger, context);
             var actionResult = await testController.Login("a");
 
             //Assert
@@ -201,14 +201,16 @@ namespace RevConnectAPI.Tests
 
             //Act
             UsersController testController = new UsersController(_logger, context);
-            var actionResult = await testController.ChangeAboutMe(newUser);
+            await testController.ChangeAboutMe(newUser);
             var getresult = await testController.Login("a");
             //Assert
-            User users = getresult.Value;
-            var firstUser = users;
-            Assert.Equal("a", firstUser.authID);
-            Assert.Equal("ChangedTest", firstUser.aboutMe);
-            Assert.Equal("Testing@test.com", firstUser.email);
+            var result = getresult.Value;
+
+            Assert.Equal("a", result.authID);
+            Assert.Equal("ChangedTest", result.aboutMe);
+            Assert.Equal("Testing@test.com", result.email);
+
+
         }
         //////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////
@@ -283,7 +285,8 @@ namespace RevConnectAPI.Tests
             Assert.Equal("a", firstUser.authID);
             Assert.Equal("Testing", firstUser.name);
             Assert.Equal("ChangedTest", firstUser.email);
-        }//This test is FAILING
+        }
+
         /////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         [Fact]

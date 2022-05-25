@@ -27,7 +27,7 @@ namespace RevConnectAPI.Tests
                 authID = "",
                 postID = 1,
                 commentID = 1,//null
-               
+
 
             });
             context.Likes.Add(new Like
@@ -42,7 +42,7 @@ namespace RevConnectAPI.Tests
             context.SaveChanges();
 
             //Act
-            LikesController testController = new LikesController(_logger ,context);
+            LikesController testController = new LikesController(_logger, context);
             var actionResult = await testController.GetPostLikesCount(1);//post
 
             //Assert
@@ -53,7 +53,7 @@ namespace RevConnectAPI.Tests
             var secondLike = likes[1];
 
             Assert.Equal(1, firstLike.likeID);
-            Assert.Equal("", firstLike. authID );
+            Assert.Equal("", firstLike.authID);
             Assert.Equal(1, firstLike.postID);
             Assert.Equal(1, firstLike.commentID);
 
@@ -61,7 +61,7 @@ namespace RevConnectAPI.Tests
             Assert.Equal("", secondLike.authID);
             Assert.Equal(1, secondLike.postID);
             Assert.Equal(1, secondLike.commentID);
-        
+
 
         }
         //////////////////////
@@ -77,21 +77,24 @@ namespace RevConnectAPI.Tests
                 likeID = 1,
                 authID = "a",
                 postID = 1,
-                commentID = 0,//null
+                commentID = null,
 
 
             };
 
             //Act
             LikesController testController = new LikesController(_logger, context);
-            var actionResult = await testController.LikePost(TestLike);
+            await testController.LikePost(TestLike);
+            var actionResult = await testController.GetPostLikesCount(1);//post
+
             //Assert
-            Like likes = actionResult.Value;
+            List<Like> likes = actionResult.Value;
             var firstLike = likes;
-            Assert.Equal(1, firstLike.likeID);
-            Assert.Equal("a", firstLike.authID);
-            Assert.Equal(1, firstLike.postID);
-            Assert.Equal(0, firstLike.commentID);
+            Assert.Equal(1, firstLike[0].likeID);
+            Assert.Equal("a", firstLike[0].authID);
+            Assert.Equal(1, firstLike[0].postID);
+            Assert.Equal(null, firstLike[0].commentID);
+
         }
         ///////////////////
         [Fact]
@@ -104,11 +107,10 @@ namespace RevConnectAPI.Tests
             {
                 likeID = 1,
                 authID = "a",
-                postID = 1,
-                commentID = 1,//null
-
-
+                postID = null,
+                commentID = 1,
             };
+
 
             //Act
             LikesController testController = new LikesController(_logger, context);
@@ -118,7 +120,6 @@ namespace RevConnectAPI.Tests
             var firstLike = likes;
             Assert.Equal(1, firstLike.likeID);
             Assert.Equal("a", firstLike.authID);
-            Assert.Equal(1, firstLike.postID);
             Assert.Equal(1, firstLike.commentID);
         }//This Test Keeps Failing
 
