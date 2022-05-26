@@ -1,0 +1,75 @@
+//ACTION for Auth0 dashboard.  Will need to be set up to talk to a registered API thorugh your Auth0
+
+APIURI		
+DOMAIN    	
+AUDIENCE  	
+CLIENT_ID  	
+CLIENT_SECRET   
+
+
+//Below is the Post User Registration script.  This will have to be set up on the Auth0 dashboard under Actions/Flows
+//Without the script the api will still be accessible however your users will not be stored in the TestRevConnecct Database.
+
+//must add dependency, set name to axios
+const axios = require('axios');
+
+exports.onExecutePostUserRegistration = async (event) => {
+
+console.log("Post(get for token");
+  const tokenOptions = {
+    method: 'POST',
+    url: `{DOMAIN}/oauth/token`,
+    headers: { 'content-type': 'application/json' },
+    data: {
+      grant_type: 'client_credentials',
+      client_id: `{CLIENT_ID}`,
+      client_secret: `{CLIENT_SECRET}`,
+      audience: `{AUDIENCE}`
+    }
+  };
+
+
+  const res = await axios.request(tokenOptions);
+  console.log('Access Token: ', res.data.access_token);
+
+
+  const usersOptions = {
+    method: 'POST',
+    url: '{APIURI}/Users',
+    headers: {
+      'Authorization': `Bearer ${res.data.access_token}`,
+      'content-type': 'application/json'
+    },
+    data:{
+            userID: 0,
+            authID:event.user.user_id,
+            name:`user${makeid(12)}`,
+            email:event.user.email,
+            profilePicture:"https://cdn.discordapp.com/attachments/973345966088405012/973605149215981568/rev_chat_icon.png",
+            aboutMe: "",
+            phone:"XXX-XXX-XXXX",
+            address:"",
+            linkedin:"",
+            twitter:"",
+            github:"",
+            active:true,       
+    
+    }
+  };
+
+  const users = await axios.request(usersOptions);
+  console.log(`Users:${users}`);
+};
+
+//fucntion to add 12 random numbers and letters to the username upon initial creation
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+}
