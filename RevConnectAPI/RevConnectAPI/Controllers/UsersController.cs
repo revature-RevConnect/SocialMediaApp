@@ -85,7 +85,7 @@ namespace RevConnectAPI.Controllers
         {
             var newUser = await _rc.Users
                         .Where(b => b.authID == user.authID).FirstAsync();
-            newUser.aboutMe = user.aboutMe;
+            newUser.email = user.email;
             await _rc.SaveChangesAsync();
 
             return new ContentResult() { StatusCode = 200 };
@@ -102,7 +102,7 @@ namespace RevConnectAPI.Controllers
             return new ContentResult() { StatusCode = 200 };
         }
 
-                [HttpPut("github")]
+        [HttpPut("github")]
         public async Task<ActionResult<User>> ChangeGithub(User user)
         {
             var newUser = await _rc.Users

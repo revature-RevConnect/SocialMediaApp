@@ -1,4 +1,3 @@
-
 # RevConnect
 
 ## Project Description
@@ -19,26 +18,17 @@ RevConnect is a single page web application with an Angular web application that
 * Karma - version 11.18
 * xUnit - version 2.4.1
 
-## Features
-
-* Live messaging between 2 users using SignalR 
-* Dark mode
-To-do list:
-* Wow improvement to be done 1
-
 ## Getting Started
 
 - `git clone https://github.com/revature-RevConnect/SocialMediaApp.git`
 - `npm install -g @angular/cli`
-- `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
+- If running on Windows, also run: `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
 - `dotnet tool list --global`
 - `dotnet tool list --global dotnet-ef`
 
 - Inside the package manager console, set: 
  `“Default project: RevConnectAPI”`
-
-  then run the command:  
-  `update-database`
+  then run the command: `update-database`
 
 - `dotnet run ./SocialMediaApp/RevConnectAPP`
 - `npm install ./SocialMediaApp/RevConnectAPI`
@@ -47,84 +37,114 @@ To-do list:
 
 ## Usage
 - Create an account 
-- View posts in Post Feed
-- Like a post
-- Create a comment for a post
+- Login and log out of account
+- Create user profile
 - Create a post 
+- View posts from all users in Home page
+- "Like" a post
+- Comment on a post
+- Directly message another user, or everyone in the chatroom, in real time 
 - Toggle dark mode
 
 
+## For Future Development
+* Adding additional unit tests
+* Fixing minor bugs with dark mode
+
 ## Contributors
 
-Team Leads
-- Brian Keener 
-- Dan Gagne
-- Francis Chung
+### Team Leads
 
-Post Feed
-- Brian Keener
-- Kelly Keng
+>  Brian Keener  
+>   - Chatroom
+    - Comments
+    - Dark mode 
+    - Documentation 
+    - "Like" a post 
+    - Post feed
+>
+> Dan Gagne
+>  -  Unit testing
+    - Docker
+    - Mockaroo
+    - SonarCloud
+    - Static Web Hosting
+>    
+> Francis Chung
+>  -  Auth0
+    - Create a profile
+    - Upload a profile picture
+    - User profile
 
-“Like” a Post
-- Brian Keener
-- Muhammad Amin Rahimi
-- Jerome Gear
+### Features
 
-Chat Room
-- Austin Hickman
-- Cameron Merkh   
-- Zhixin He
+> Post Feed
+> - Brian Keener  
+> - Kelly Keng
+>
+> “Like” a Post
+> - Brian Keener  
+> - Muhammad Amin Rahimi  
+> - Jerome Gear  
+>
+> Chat Room
+> - Austin Hickman  
+> - Cameron Merkh     
+> - Zhixin He  
+>
+> Dark Mode
+> - Kevin Lee  
+> - Brian Keener  
+>
+> Documentation
+> - Kevin Lee  
+> - Kelly Keng  
+> - Jerome Gear  
+>
+> Comments Section 
+> - Anu Thekkekattil  
+> - Brian Keener  
+>
+> Docker 
+> - Donald Keita  
+> 
+> Unit Testing
+> - Diego De Los Santos  
+> - Jay Camp    
+> - Bruk Gella    
+>
+> Sonar Cloud 
+> - Austin Hickman
+> - Dan Gagne
+>
+> Mockaroo 
+> - Tryggve Rogness
+>
+> Static Web Hosting
+> - Dan Gagne
+>
+> Frontend Design (Home, User Profile, Settings)
+> - Phirith Pheak
+> 
+> Auth0
+> - Andrew Krisnawan
+> - Phirith Pheak
+> - Tahereh Rastegarzare
+> - Tuan Anh Nguyen
+> - Tryggve Rogness
+> - Phirith Pheak
+> 
+> User Profile
+> - Aureliano Silva
+> - Phirith Pheak
+>
+> Upload a Profile Picture
+> - Christian Cubides
+> - Dan Gagne
+>
+> Settings 
+> - Phirith Pheak
 
-Dark Mode
-- Kevin Lee
-- Brian Keener
 
-Documentation
-- Kevin Lee
-- Kelly Keng
-- Jerome Gear
 
-Comments Section 
-- Anu Thekkekattil
-- Brian Keener
-
-Docker 
-- Donald Keita
-
-Create a Profile
-- Aureliano Silva
-- Phirith Pheak
-
-Upload a Profile Picture
-- Christian Cubides
-- Dan Gagne
-
-Settings 
-- Phirith Pheak
-
-Unit Testing
-- Diego De Los Santos
-- Jay Camp  
-- Bruk Gella  
-
-Auth0
-- Andrew Krisnawan
-- Phirith Pheak
-- Tahereh Rastegarzare
-- Tuan Anh Nguyen
-- Tryggve Rogness
-- Phirith Pheak
-
-Sonar Cloud 
-- Austin Hickman
-- Dan Gagne
-
-Mockaroo 
-- Tryggve Rogness
-
-Static Web Hosting
-- Dan Gagne
-
-Frontend Design (Home, User Profile, Settings)
-- Phirith Pheak
 
